@@ -1,40 +1,3 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    position: relative;
-    background-color: black;
-    height: 5000px;
-}
-
-.background {
-    margin: 0;
-    width: 100%;
-    /*height: 100%;*/
-    background-image: url('Firefly_a_park_angelic_looking_with_lots_of_different_plants_flowers_and_free_small_animals_utopic.png'); /* Use your own background image */
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    transition: background-color 0.5s ease;
-    height: 100vh;
-}
-
-.nav {
-    position: absolute;
-    z-index: 1;
-    padding: 50px;
-    color: white;
-}
-
-h1, p {
-    text-align: center;
-    margin-top: 200px;
-}
-
-
 /*Strawford used for general text*/
 @font-face {
     font-family: 'Strawford';
@@ -92,4 +55,103 @@ h1, p {
     font-weight: bold;
     font-style: italic;
 }
+
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    position: relative;
+    background-color: black;
+    height: 5000px;
+}
+
+.background {
+    margin: 0;
+    width: 100%;
+    /*height: 100%;*/
+    background-image: url('Firefly_a_park_angelic_looking_with_lots_of_different_plants_flowers_and_free_small_animals_utopic.png'); /* Use your own background image */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: background-color 0.5s ease;
+    height: 100vh;
+}
+
+.nav {
+    position: absolute;
+    z-index: 1;
+    padding: 50px;
+    color: white;
+}
+
+h1, p {
+    text-align: center;
+    margin-top: 200px;
+}
+    /*Strawford used for general text*/
+    @font-face {
+        font-family: 'Strawford';
+        src: url('../css/fonts/strawford-regular-webfont.ttf') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Strawford';
+        src: url('../css/fonts/strawford-regular-webfont.ttf') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Strawford';
+        src: url('../css/fonts/strawford-regularitalic-webfont.ttf') format('woff');
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: 'Strawford';
+        src: url('../css/fonts/strawford-regularitalic-webfont.ttf') format('woff');
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    /*Ade font, used for logo and some headers*/
+    @font-face {
+        font-family: 'Ade';
+        src: url('../css/fonts/AdeDisplay.otf') format('otf');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Ade';
+        src: url('../css/fonts/AdeDisplay.otf') format('otf');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Ade';
+        src: url('../css/fonts/AdeDisplay.otf') format('otf');
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: 'Ade';
+        src: url('../css/fonts/AdeDisplay.otf') format('otf');
+        font-weight: bold;
+        font-style: italic;
+    }
+
+
+
+
 

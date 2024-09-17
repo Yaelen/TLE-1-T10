@@ -30,13 +30,6 @@
     </script>
 </head>
 <body>
-<!--<div class="background">-->
-<!--    <div class="content">-->
-<!--        <h1>Something</h1>-->
-<!--        <p>???</p>-->
-<!--        <div style="height: 2000px;"></div>-->
-<!--    </div>-->
-<!--</div>-->
 
     <header class="background">
         <nav>
