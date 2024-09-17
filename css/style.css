@@ -74,7 +74,7 @@ body {
     margin: 0;
     width: 100%;
     /*height: 100%;*/
-    background-image: url('Firefly_a_park_angelic_looking_with_lots_of_different_plants_flowers_and_free_small_animals_utopic.png'); /* Use your own background image */
+    background-image: url('../images/Firefly_a_park_angelic_looking_with_lots_of_different_plants_flowers_and_free_small_animals_utopic.png'); /* Use your own background image */
     background-size: cover;
     background-position: center;
     z-index: -1;
