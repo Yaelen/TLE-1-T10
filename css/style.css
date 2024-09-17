@@ -35,3 +35,61 @@ h1, p {
 }
 
 
+/*Strawford used for general text*/
+@font-face {
+    font-family: 'Strawford';
+    src: url('../css/fonts/strawford-regular-webfont.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Strawford';
+    src: url('../css/fonts/strawford-regular-webfont.ttf') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Strawford';
+    src: url('../css/fonts/strawford-regularitalic-webfont.ttf') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Strawford';
+    src: url('../css/fonts/strawford-regularitalic-webfont.ttf') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*Ade font, used for logo and some headers*/
+@font-face {
+    font-family: 'Ade';
+    src: url('../css/fonts/AdeDisplay.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ade';
+    src: url('../css/fonts/AdeDisplay.otf') format('otf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ade';
+    src: url('../css/fonts/AdeDisplay.otf') format('otf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Ade';
+    src: url('../css/fonts/AdeDisplay.otf') format('otf');
+    font-weight: bold;
+    font-style: italic;
+}
+
