@@ -75,12 +75,19 @@ $genre =
                 <a href="events.php">EVENTS</a>
             </div>
         </nav>
-        <section>
+        <section class="header-main">
             <div class="title-main">
-                <h1><span class="green-main-gaia-text">GAIA</span><br><span class="small-main-text">Committed to Reviving Earth&#39s Natural Balance </span><span class="medium-main-text">PARK</span></h1>
+                <h1 class="green-main-gaia-text">GAIA</h1>
+                <div class="s-m-main-text-div">
+                    <h1 class="small-main-text">Committed to Reviving Earth&#39s Natural Balance </h1>
+                    <h1 class="medium-main-text">PARK</h1>
+                </div>
             </div>
-            <div>
-                <h2>WHERE<br>NATURE &#38 HUMANITY<br><span class="opposite-side-text">RECONNECT</span></h2>
+            <div class="sub-text-main">
+                <h2 class="left-side-sub-text">WHERE</h2>
+                <h2 class="middle-side-sub-text">NATURE &#38 HUMANITY</h2>
+                <h2 class="right-side-sub-text">RECONNECT</h2>
+
             </div>
         </section>
     </header>

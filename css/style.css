@@ -61,8 +61,9 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Ade', 'Strawford';
+    /*font-family: 'Ade', 'Strawford';*/
     font-size: 10px;
+    color: white;
 }
 
 body {
@@ -105,15 +106,81 @@ a {
 
 .links {
     position: absolute;
-    width: 45vw;
+    width: 50vw;
     font-family: 'Strawford';
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 0 25vw;
+    padding-left: 25vw;
     font-size: 1.5rem;
 }
 
 .links a {
     color: white;
 }
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    margin: 30vh 5vw 0 2vw;
+}
+
+.title-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.green-main-gaia-text {
+    font-family: 'Ade';
+    color: #6e9b42;
+    font-size: 28rem;
+    margin: 0;
+    line-height: 0.7;
+    letter-spacing: -0.02em;
+}
+
+.s-m-main-text-div{
+    display: flex;
+}
+
+.small-main-text {
+    font-family: 'Strawford';
+    margin: 0;
+    font-size: 2.4rem;
+}
+.medium-main-text {
+    font-family: 'Strawford';
+    font-style: italic;
+    font-size: 12.4rem;
+    margin: 0;
+    line-height: 0.85;
+}
+
+.sub-text-main {
+    font-family: 'Strawford';
+    font-size: 3.3rem;
+    margin: 0;
+}
+
+.left-side-sub-text {
+
+}
+
+.middle-side-sub-text {
+
+}
+
+.right-side-sub-text {
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
