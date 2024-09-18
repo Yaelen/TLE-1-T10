@@ -66,7 +66,7 @@ $genre =
 
     <header class="background">
         <nav>
-            <a href="index.php" id="logo">GAIA</a>
+
             <div class="links">
                 <a href="parkinfo.php">PARK</a>
                 <a href="seed.php">GAIASEED</a>
@@ -74,6 +74,7 @@ $genre =
                 <a href="donate.php">SHOP</a>
                 <a href="events.php">EVENTS</a>
             </div>
+            <a href="index.php" id="logo">GAIA</a>
         </nav>
         <section class="header-main">
             <div class="title-main">
