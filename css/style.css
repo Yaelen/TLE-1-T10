@@ -102,6 +102,7 @@ a {
     padding-left: 2vw;
     font-size: 3.2rem;
     color: white;
+    z-index: 2;
 }
 
 .links {
