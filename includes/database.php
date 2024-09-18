@@ -1,6 +1,6 @@
 <?php
 $host       = "localhost";
-$database   = "eindopdracht";
+$database   = "gaiapark";
 $user       = "root";
 $password   = "";
 
