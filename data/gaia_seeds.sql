@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2024 at 10:42 AM
+-- Generation Time: Sep 17, 2024 at 10:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -39,7 +39,8 @@ CREATE TABLE `gaia_seeds` (
 --
 
 INSERT INTO `gaia_seeds` (`id`, `plant_name`, `information`, `test`) VALUES
-(1, 'poppy', 'poppy uit minecraft', '');
+(1, 'poppy', 'poppy uit minecraft', ''),
+(2, 'dandelion', 'pp', '');
 
 --
 -- Indexes for dumped tables
@@ -59,7 +60,7 @@ ALTER TABLE `gaia_seeds`
 -- AUTO_INCREMENT for table `gaia_seeds`
 --
 ALTER TABLE `gaia_seeds`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
