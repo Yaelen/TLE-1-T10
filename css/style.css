@@ -122,8 +122,9 @@ a {
 
 .header-main {
     display: flex;
-    justify-content: space-between;
-    margin: 30vh 5vw 0 2vw;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin-top: 30vh;
 }
 
 .title-main {
@@ -137,7 +138,7 @@ a {
     font-size: 28rem;
     margin: 0;
     line-height: 0.7;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 .s-m-main-text-div{
@@ -154,7 +155,8 @@ a {
     font-style: italic;
     font-size: 12.4rem;
     margin: 0;
-    line-height: 0.85;
+    line-height: 0.9;
+    letter-spacing: -0.08em;
 }
 
 .sub-text-main {
@@ -164,23 +166,38 @@ a {
 }
 
 .left-side-sub-text {
-
+    margin: 0;
 }
 
 .middle-side-sub-text {
+    margin: 0;
 
 }
 
 .right-side-sub-text {
     text-align: right;
+    margin: 0;
+
 }
 
 
 
 
+.background-seeds {
+    background-image: url("../images/Artboard_3_1.png");
+    width: 100vw;
+    background-size: contain;
+    background-position: center;
+    margin: 0;
+}
 
-
-
+.background-park {
+    background-image: url("../images/Artboard_3.png");
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+}
 
 
 

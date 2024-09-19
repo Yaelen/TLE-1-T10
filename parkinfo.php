@@ -8,11 +8,7 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<nav>
-    <a></a>
-</nav>
-<footer>
+<img src="images/Artboard_3.png" class="background-park">
 
-</footer>
 </body>
 </html>

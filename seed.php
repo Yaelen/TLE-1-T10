@@ -8,11 +8,7 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<nav>
-    <a></a>
-</nav>
-<footer>
 
-</footer>
+<img src="images/Artboard_3_1.png" class="background-seeds">
 </body>
 </html>
