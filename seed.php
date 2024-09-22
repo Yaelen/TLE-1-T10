@@ -9,6 +9,6 @@
 </head>
 <body>
 
-<img src="images/Artboard_3_1.png" class="background-seeds">
+
 </body>
 </html>
