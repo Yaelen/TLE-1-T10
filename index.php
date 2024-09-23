@@ -1,35 +1,4 @@
-<?php
-/** @var mysqli $db */
 
-// Setup connection with database
-require_once 'includes/database.php';
-require_once 'includes/authentication.php';
-
-$query = "SELECT * FROM gaia_seeds";
-
-$result = mysqli_query($db, $query)
-or die('Error '.mysqli_error($db).' with query '.$query);
-
-$games = [];
-
-while($row = mysqli_fetch_assoc($result))
-{
-    $games[] = $row;
-}
-
-$genre =
-
-    mysqli_close($db);
-
-// Select all the seeds from the database
-
-// Store the seeds in an array
-
-// Close the connection
-
-
-
-?>
 
 <!doctype html>
 <html lang="en">

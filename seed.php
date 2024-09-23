@@ -1,23 +1,26 @@
+<?php
+/** @var mysqli $db */
+
+// Setup connection with database
+require_once 'includes/database.php';
+require_once 'includes/authentication.php';
+
+mysqli_close($db);
+
+?>
+
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GAIA seed</title>
-    <link rel="stylesheet" href="./css/gaiaseed.css">
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>GAIA seed</title>
+<link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
 
-    <div id="section1">
-
-        <div class="glass">
-
-        </div>
-
-    </div>
+SEED ME BB
 
 </body>
 </html>
