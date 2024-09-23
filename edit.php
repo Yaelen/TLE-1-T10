@@ -38,10 +38,9 @@ while($row = mysqli_fetch_assoc($result))
 if(isset($_POST['submit'])) {
 
     //get form data
-    $name = mysqli_real_escape_string($db, $_POST['name']);
-    $studio = mysqli_real_escape_string($db, $_POST['studio']);
-    $genre = mysqli_real_escape_string($db, $_POST['genre']);
-    $year = mysqli_real_escape_string($db, $_POST['year']);
+    $name = mysqli_real_escape_string($db, $_POST['Animal']);
+    $location = mysqli_real_escape_string($db, $_POST['Location']);
+    $information = mysqli_real_escape_string($db, $_POST['Information']);
 
 
 
@@ -51,19 +50,15 @@ if(isset($_POST['submit'])) {
 //	if error
 //		show errors at correct input field
     if ($name == ""){
-        $errors['name'] = "fill in name";
+        $errors['animal'] = "fill in name";
     }
 
-    if ($studio == ""){
-        $errors['studio'] = "fill in studio";
+    if ($location == ""){
+        $errors['location'] = "fill in studio";
     }
 
-    if ($genre == ""){
-        $errors['genre'] = "fill in genre";
-    }
-
-    if ($year == ""){
-        $errors['year'] = "fill in year";
+    if ($information == ""){
+        $errors['information'] = "fill in genre";
     }
 
 
@@ -75,7 +70,7 @@ if(isset($_POST['submit'])) {
 
     if (empty($errors)) {
 //		INSERT query opbouwen
-        $query = "UPDATE games SET name = '$name', year = '$year', studio = '$studio' WHERE games.id = '$id';";
+        $query = "UPDATE gaia_animals SET Animal = '$name', Location = '$location', Information = '$information' WHERE gaia_animals.id = '$id';";
 //		Query uitvoeren op de database
         $result = mysqli_query($db, $query)
         or die('Error '.mysqli_error($db).' with query '.$query);
@@ -139,28 +134,29 @@ if(isset($_POST['submit'])) {
 
 
                 <label class="label" for="name">Name</label>
-                <input class="input" id="name" type="text" name="name" value="<?= $games[0]['name'] ?>"/>
+                <input class="input" id="name" type="text" name="name" value="<?= $name[0]['name'] ?>"/>
                 <p class="help is-danger">
                     <?= $errors['name'] ?? '' ?>
+
                 </p>
 
 
-                <label class="label" for="studio">studio</label>
-                <input class="input" id="studio" type="text" name="studio" value="<?= $games[0]['studio'] ?>"/>
+                <label class="label" for="studio">Location</label>
+                <input class="input" id="studio" type="text" name="studio" value="<?= $location[0]['studio'] ?>"/>
                 <p class="help is-danger">
                     <?= $errors['studio'] ?? '' ?>
                 </p>
 
 
-                <label class="label" for="genre">genre</label>
+                <label class="label" for="genre">radio</label>
                 <input id="genre" type="radio" name="genre" value=" "/>
                 <p class="help is-danger">
                     <?= $errors['genre'] ?? '' ?>
                 </p>
 
 
-                <label class="label" for="year">year</label>
-                <input class="input" id="year" type="text" name="year" value="<?= $games[0]['year'] ?>"/>
+                <label class="label" for="year">Information</label>
+                <input class="input" id="year" type="text" name="year" value="<?= $information[0]['year'] ?>"/>
                 <p class="help is-danger">
                     <?= $errors['year'] ?? '' ?>
                 </p>
