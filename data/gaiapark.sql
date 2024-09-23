@@ -3,15 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 17 sep 2024 om 10:32
--- Serverversie: 10.4.32-MariaDB
--- PHP-versie: 8.2.12
+-- Generation Time: Sep 23, 2024 at 11:03 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-    /*gesge*/
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `gaia_animals`
+-- Table structure for table `gaia_animals`
 --
 
 CREATE TABLE `gaia_animals` (
@@ -35,10 +34,17 @@ CREATE TABLE `gaia_animals` (
   `Location` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `gaia_animals`
+--
+
+INSERT INTO `gaia_animals` (`id`, `Animal`, `Infomation`, `Location`) VALUES
+(1, 'Mammoth', 'mammoth blablabla', '34567890100');
+
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `gaia_seeds`
+-- Table structure for table `gaia_seeds`
 --
 
 CREATE TABLE `gaia_seeds` (
@@ -48,69 +54,79 @@ CREATE TABLE `gaia_seeds` (
   `test` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `gaia_seeds`
+--
+
+INSERT INTO `gaia_seeds` (`id`, `plant_name`, `information`, `test`) VALUES
+(1, 'poppy', 'poppy uit minecraft', ''),
+(2, 'dandelion', 'pp', '');
+
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `gaia_users`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `gaia_users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `email` varchar(255) NOT NULL
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Gegevens worden geëxporteerd voor tabel `gaia_users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `gaia_users` (`id`, `first_name`, `last_name`, `email`) VALUES
-(1, 'admin', 'admin', 'admin@admin.nl');
+INSERT INTO `users` (`id`, `email`, `password`, `first_name`, `last_name`) VALUES
+(1, 'sex@sex.sex', '$2y$10$oeQIX3LMshjStTr4dpDRpOHS6/KnxEgk3.Qv.ovHSiCxOhoMNAXHu', 'Yiming', 'Li'),
+(2, '123', '$2y$10$TQb/yUYKH6Tw14kbm7b2v.BCqXJtQ3.o3nq5v.l.IVE/7fKlzi/7C', 'adolf', 'hitler');
 
 --
--- Indexen voor geëxporteerde tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `gaia_animals`
+-- Indexes for table `gaia_animals`
 --
 ALTER TABLE `gaia_animals`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `gaia_seeds`
+-- Indexes for table `gaia_seeds`
 --
 ALTER TABLE `gaia_seeds`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `gaia_users`
+-- Indexes for table `users`
 --
-ALTER TABLE `gaia_users`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT voor geëxporteerde tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT voor een tabel `gaia_animals`
+-- AUTO_INCREMENT for table `gaia_animals`
 --
 ALTER TABLE `gaia_animals`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT voor een tabel `gaia_seeds`
---
-ALTER TABLE `gaia_seeds`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT voor een tabel `gaia_users`
---
-ALTER TABLE `gaia_users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `gaia_seeds`
+--
+ALTER TABLE `gaia_seeds`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

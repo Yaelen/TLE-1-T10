@@ -1,35 +1,4 @@
-<?php
-/** @var mysqli $db */
 
-// Setup connection with database
-require_once 'includes/database.php';
-require_once 'includes/authentication.php';
-
-$query = "SELECT * FROM gaia_seeds";
-
-$result = mysqli_query($db, $query)
-or die('Error '.mysqli_error($db).' with query '.$query);
-
-$games = [];
-
-while($row = mysqli_fetch_assoc($result))
-{
-    $games[] = $row;
-}
-
-$genre =
-
-    mysqli_close($db);
-
-// Select all the seeds from the database
-
-// Store the seeds in an array
-
-// Close the connection
-
-
-
-?>
 
 <!doctype html>
 <html lang="en">
@@ -233,13 +202,14 @@ $genre =
             <div class="title-text-shop-events">
                 <h2 class="subtitle-shop-events">PARK'S EXTRAS FOR</h2>
                 <h1 class="title-shop-events">YOU</h1>
-                <p class="shop-events-text">Gaia Park is more than just a sanctuary; it's a community space where people
-                    can reconnect with nature. Visitors can attend markets, workshops, celebrations,
-                    or just rest, with all proceeds supporting the park’s efforts. Donations are tied
-                    to specific goals, offering discounts for events and the chance for everyone to
-                    see their collective impact. By engaging with Gaia Park, visitors become part of
-                    a global movement to restore the planet’s natural balance.</p>
+
             </div>
+            <p class="shop-events-text">Gaia Park is more than just a sanctuary; it's a community space where people
+                can reconnect with nature. Visitors can attend markets, workshops, celebrations,
+                or just rest, with all proceeds supporting the park’s efforts. Donations are tied
+                to specific goals, offering discounts for events and the chance for everyone to
+                see their collective impact. By engaging with Gaia Park, visitors become part of
+                a global movement to restore the planet’s natural balance.</p>
         </div>
         <div class="buttons-shop-events">
             <a class="link-button" id="shop-button" href="donate.php">SHOP</a>
