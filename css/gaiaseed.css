@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+}
+
+#section1 {
+    background-image: url('../images/section1-bg.png');
+    background-size: cover;
+    height: 100vh;
+}
