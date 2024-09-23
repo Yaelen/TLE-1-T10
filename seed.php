@@ -1,3 +1,14 @@
+<?php
+/** @var mysqli $db */
+
+// Setup connection with database
+require_once 'includes/database.php';
+require_once 'includes/authentication.php';
+
+mysqli_close($db);
+
+?>
+
 <!doctype html>
 <html lang="en">
 <meta charset="UTF-8">
