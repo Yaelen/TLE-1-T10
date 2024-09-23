@@ -57,11 +57,10 @@
 }
 
 
-
+/*Home page*/
 body, html {
     margin: 0;
     padding: 0;
-    /*font-family: 'Ade', 'Strawford';*/
     font-size: 10px;
     color: white;
 }
@@ -70,6 +69,7 @@ body {
     position: relative;
     background-color: black;
     height: 5000px;
+    overflow-x: hidden;
 }
 
 .background {
@@ -134,7 +134,7 @@ a {
 
 h1 {
     font-family: 'Ade';
-    font-size: 28rem;
+    font-size: 22rem;
     margin: 0;
 }
 
@@ -291,7 +291,7 @@ p {
 
 .animal-text-behind {
     position: sticky;
-    top: 20vw;
+    top: 15vw;
     z-index: 0;
 }
 
@@ -382,8 +382,8 @@ p {
 
 .nature-background-video {
     grid-area: 1 / 1;
-    width: 100vw;
     height: 55vh;
+    width: 100vw;
     object-fit: cover;
 }
 
@@ -411,11 +411,11 @@ p {
 }
 
 .shop-events-text {
-    padding: 3vh 10vw 0 10vw;
+    padding: 3vh 25vw 0 25vw;
 }
 
 .buttons-shop-events {
-    height: 25vh;
+    height: 50vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -423,6 +423,44 @@ p {
 
 
 
+
+
+
+
+/*park page*/
+.park-container {
+    display: flex;
+    justify-content: space-between;
+    height: 50vh;
+    margin: 0;
+    padding: 0;
+}
+
+.park-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    margin: 0;
+    background-color: darkgreen;
+
+}
+
+.park-column h1 {
+    font-family: Ade;
+    margin: 0 20px 0 20px;
+    font-size: 5.5rem;
+    color: white;
+    text-align: center;
+}
+
+.park-column h2{
+    margin: 0 20px 0 20px;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+}
 
 
 
