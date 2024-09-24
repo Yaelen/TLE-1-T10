@@ -42,17 +42,29 @@
     </header>
 
     <div id="section2">
-        <div class="left-image">
-
-        </div>
+        <img class="left-image" src="./images/Gaiaseed-section2-left-img.png" alt="bird-view-forest-with-mountain">
 
         <div class="section2-text">
+            <div class="section2- ">
+                <h2>
+                    RESTORE
+                </h2>
+                <h2>
+                    NATURE .
+                </h2>
+            </div>
 
+            <p>
+                GAIAseed is designed exclusively for GAIApark
+                visitors, empowering you to play an active role in
+                restoring the environment. This innovative tool
+                scans the park's landscape to find the perfect spots
+                for planting, or it can even produce seeds suited to
+                the specific environment you're in.
+            </p>
         </div>
 
-        <div class="right-tree">
-
-        </div>
+        <img class="right-tree" src="./images/tall-pines-tree.png" alt="Tall-pines-tree">
     </div>
 
     <div id="section3">

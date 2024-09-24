@@ -2,6 +2,7 @@
 
 <!doctype html>
 <html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -11,7 +12,7 @@
     <script>
 
         document.addEventListener('scroll', () => {
-            console.log('SCROLL!!')
+            //console.log('SCROLL!!')
             const scrollTop = window.scrollY;
             const maxScroll = 1000;
 
@@ -22,7 +23,7 @@
 
             // Apply blur to the background element
             const blurAmount = Math.min(scrollTop / 50, 20); // Max blur 20px
-            console.log(blurAmount);
+            // console.log(blurAmount);
             background.style.filter = `blur(${blurAmount}px)`;
 
             // Apply fade to black by adjusting the background color
@@ -38,6 +39,7 @@
             const images = document.querySelectorAll('.image-slider');
             let currentImageIndex = 0;
             let scrollLocked = false;
+            let endedBottom = true;
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -49,11 +51,13 @@
                 });
             }, { threshold: 0.5 });
 
-            const imageSection = document.querySelector('.section-park');
-            observer.observe(imageSection);
+            const imageSectionBottom = document.querySelector('#bottom');
+            const imageSectionTop = document.querySelector('#top');
+            observer.observe(imageSectionBottom);
 
             function handleScroll(event) {
                 const number = event.deltaY;
+
 
                 if (number > 0 && currentImageIndex < images.length - 1) {
                     // Scrolling down, go to the next image
@@ -65,17 +69,29 @@
             }
 
             function changeImage(direction) {
+                console.log('direction:' + direction)
                 // Fade out the current image
                 images[currentImageIndex].classList.remove('active');
 
                 // Update the current image index
                 currentImageIndex += direction;
 
+                console.log('image index: ' + currentImageIndex)
+
+                if (currentImageIndex === 3){
+                    observer.disconnect();
+                    observer.observe(imageSectionTop)
+                } else if (currentImageIndex === 0){
+                    observer.disconnect();
+                    observer.observe(imageSectionBottom)
+                }
+
                 // Fade in the new image
                 images[currentImageIndex].classList.add('active');
 
                 // If all images are done, unlock the scroll
                 if (currentImageIndex === images.length - 1 || currentImageIndex === 0) {
+                    console.log('removed event listnerer')
                     document.body.style.overflow = 'auto';
                     scrollLocked = false;
                     window.removeEventListener('wheel', handleScroll); // Remove scroll listener
@@ -89,13 +105,12 @@
 
     <header class="background">
         <nav>
-
             <div class="links">
-                <a href="parkinfo.php">PARK</a>
-                <a href="seed.php">GAIASEED</a>
-                <a href="ams.php">ANIMALS</a>
-                <a href="donate.php">SHOP</a>
-                <a href="events.php">EVENTS</a>
+                <a href="parkinfo.php" class="nav-links">PARK</a>
+                <a href="seed.php" class="nav-links">GAIASEED</a>
+                <a href="ams.php" class="nav-links">ANIMALS</a>
+                <a href="donate.php" class="nav-links">SHOP</a>
+                <a href="events.php" class="nav-links">EVENTS</a>
             </div>
             <a href="index.php" id="logo">GAIA</a>
         </nav>
@@ -125,12 +140,14 @@
             than just a natural escape. Events like markets and parties
             can be hosted, and donations help fund these initiatives—bringing
             people closer to nature while helping revive the planet.</p>
+        <hr id='top'>
         <div id="images-div">
             <img src="images/slide-photo-1.png" class="image-slider active"/>
             <img src="images/slide-photo-2.png" class="image-slider"/>
             <img src="images/slide-photo-3.png" class="image-slider"/>
             <img src="images/slide-photo-4.png" class="image-slider"/>
         </div>
+        <hr id='bottom'>
         <div class="park-button-div">
             <a class="link-button" id="park-button" href="parkinfo.php">PARKS</a>
         </div>
