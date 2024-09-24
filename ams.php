@@ -7,11 +7,11 @@
     <title>My World by amCharts</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes, minimal-ui">
     <link rel="stylesheet" href="./css/style.css">
-<!--    <script src="//cdn.amcharts.com/lib/5/index.js" defer></script>-->
-<!--    <script src="//cdn.amcharts.com/lib/5/map.js" defer></script>-->
-<!--    <script src="//cdn.amcharts.com/lib/5/geodata/worldLow.js" defer></script>-->
-<!--    <script src="//cdn.amcharts.com/lib/5/themes/Animated.js" defer></script>-->
-<!--    <script type="text/javascript" src="./locationtracking.js" defer></script>-->
+    <script src="//cdn.amcharts.com/lib/5/index.js" defer></script>
+    <script src="//cdn.amcharts.com/lib/5/map.js" defer></script>
+    <script src="//cdn.amcharts.com/lib/5/geodata/worldLow.js" defer></script>
+    <script src="//cdn.amcharts.com/lib/5/themes/Animated.js" defer></script>
+    <script type="text/javascript" src="./locationtracking.js" defer></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
