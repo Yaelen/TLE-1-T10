@@ -45,16 +45,12 @@
         <img class="left-image" src="./images/Gaiaseed-section2-left-img.png" alt="bird-view-forest-with-mountain">
 
         <div class="section2-text">
-            <div class="section2- ">
-                <h2>
-                    RESTORE
-                </h2>
-                <h2>
-                    NATURE .
-                </h2>
+            <div class="section2-title">
+                <h2>RESTORE</h2>
+                <h2 class="nature-text">NATURE<span class="dot">.</span></h2>
             </div>
 
-            <p>
+            <p class="section2-info-text">
                 GAIAseed is designed exclusively for GAIApark
                 visitors, empowering you to play an active role in
                 restoring the environment. This innovative tool
