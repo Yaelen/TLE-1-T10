@@ -109,8 +109,8 @@
                 <a href="parkinfo.php" class="nav-links">PARK</a>
                 <a href="seed.php" class="nav-links">GAIASEED</a>
                 <a href="ams.php" class="nav-links">ANIMALS</a>
-                <a href="donate.php" class="nav-links">SHOP</a>
-                <a href="events.php" class="nav-links">EVENTS</a>
+                <a href="donate.php" class="nav-links">SUPPORT</a>
+                <a href="events.php" class="nav-links">DISCOVER</a>
             </div>
             <a href="index.php" id="logo">GAIA</a>
         </nav>

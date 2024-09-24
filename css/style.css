@@ -450,22 +450,30 @@ p {
 
 
 /*park page*/
+.nav-park {
+    z-index: 5;
+    position: absolute;
+}
+
 .park-container {
     display: flex;
     justify-content: space-between;
-    height: 50vh;
+    height: 100vh;
     margin: 0;
     padding: 0;
+
 }
 
 .park-column {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
+    position: relative;
     height: 100%;
     margin: 0;
-    background-color: darkgreen;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 
 }
 
@@ -478,14 +486,101 @@ p {
 }
 
 .park-column h2{
+    font-family: Strawford;
     margin: 0 20px 0 20px;
     font-size: 2rem;
     color: white;
     text-align: center;
 }
 
+.park-sum{
+    font-family: Strawford;
+    font-weight: bold;
+    margin: 0 20px 0 20px;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.top{
+    margin-top: 25vh;
+}
+
+.bot{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.bot h2{
+    font-weight: bolder;
+    font-style: italic;
+}
+
+#alpha-bg{
+    background-image: url('../images/denali.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+}
+
+#beta-bg{
+    background-image: url('../images/mangrove.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+}
+
+#gamma-bg{
+    background-image: url('../images/lake.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+}
+
+#delta-bg{
+    background-image: url('../images/amazone.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+}
+
+#epsilon-bg{
+    background-image: url('../images/mount.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+}
 
 
+/*animation*/
+.park-column.clicked {
+    transition: all 0.5s ease;
+    flex-grow: 1;
+}
 
+.park-column:not(.clicked) {
+    flex-grow: 0.5;
+    opacity: 0.5;
+}
 
+.park-column.clicked h1, .park-column.clicked h2 {
+    transform: scale(1.2);
+    transition: transform 1s ease;
+}
 
+.park-sum {
+    opacity: 0;
+    height: 0;
+    transition: opacity 2.5s ease;
+    overflow: hidden;
+}
+
+.park-column.clicked .park-sum {
+    opacity: 100%;
+    height: auto;
+}
