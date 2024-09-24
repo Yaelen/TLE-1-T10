@@ -39,11 +39,14 @@ mysqli_close($db);
 <div class="container px-4">
     <div class="columns is-centered">
         <div class="column is-narrow">
-            <h2 class="title mt-4"> <?= $animal[0]['Animal'] ?> details</h2>
+            <h2 class="title mt-4"> <?= $animal[0]['animal'] ?> details</h2>
             <section class="content">
                 <ul>
-                    <li>Location: <?= $animal[0]['Location'] ?></li>
-                    <li>Information: <?= $animal[0]['Information'] ?> </li>
+                    <li>Picture: <?= $animal[0]['animal_picture'] ?></li>
+                    <li>Information: <?= $animal[0]['animal_information'] ?> </li>
+                    <li>Park: <?= $animal[0]['park'] ?> </li>
+                    <li>Dieet: <?= $animal[0]['dieet'] ?> </li>
+                    <li>Population: <?= $animal[0]['population'] ?> </li>
 
 
                 </ul>

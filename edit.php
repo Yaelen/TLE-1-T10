@@ -38,9 +38,16 @@ while($row = mysqli_fetch_assoc($result))
 if(isset($_POST['submit'])) {
 
     //get form data
-    $name = mysqli_real_escape_string($db, $_POST['Animal']);
-    $location = mysqli_real_escape_string($db, $_POST['Location']);
-    $information = mysqli_real_escape_string($db, $_POST['Information']);
+    $name = mysqli_real_escape_string($db, $_POST['animal']);
+    $picture = mysqli_real_escape_string($db, $_POST['animal_picture']);
+    $age = mysqli_real_escape_string($db, $_POST['age']);
+    $information = mysqli_real_escape_string($db, $_POST['animal_information']);
+    $park = mysqli_real_escape_string($db, $_POST['park']);
+    $dieet = mysqli_real_escape_string($db, $_POST['dieet']);
+    $population = mysqli_real_escape_string($db, $_POST['population']);
+
+
+
 
 
 
@@ -53,8 +60,8 @@ if(isset($_POST['submit'])) {
         $errors['animal'] = "fill in name";
     }
 
-    if ($location == ""){
-        $errors['location'] = "fill in studio";
+    if ($picture == ""){
+        $errors['picture'] = "fill in studio";
     }
 
     if ($information == ""){
@@ -70,7 +77,7 @@ if(isset($_POST['submit'])) {
 
     if (empty($errors)) {
 //		INSERT query opbouwen
-        $query = "UPDATE gaia_animals SET Animal = '$name', Location = '$location', Information = '$information' WHERE gaia_animals.id = '$id';";
+        $query = "UPDATE gaia_animals SET animal = '$name', animal_information = '$information', park = '$park' , dieet = '$dieet' , population = '$population' WHERE gaia_animals.id = '$id';";
 //		Query uitvoeren op de database
         $result = mysqli_query($db, $query)
         or die('Error '.mysqli_error($db).' with query '.$query);
