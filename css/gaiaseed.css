@@ -17,7 +17,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    margin-top: 15vh;
+    padding-top: 27vh;
 }
 
 .glass {
@@ -59,13 +59,13 @@ h1 {
 }
 
 nav {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100vw;
     height: 10vh;
     padding: 0;
     background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(0deg, rgb(255 255 255 / 0%) 0%, rgb(0 0 0 / 54%) 100%);
     z-index: 100;
 
 }
@@ -98,7 +98,7 @@ nav {
 }
 
 .left-image {
-    rid-area: 1 / 1 / 2 / 2;
+    grid-area: 1 / 1 / 2 / 2;
     position: relative;
     scale: 80%;
     left: -2vw;
