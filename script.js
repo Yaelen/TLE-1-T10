@@ -10,14 +10,22 @@ const data = {
 
 function enableBtn(id) {
     let el = document.querySelector(`#${id}`);
-    if (el.classList.contains("disabled")) {
-        el.classList.remove("disabled");
+    if (el) {  // Check if the element exists
+        if (el.classList.contains("disabled")) {
+            el.classList.remove("disabled");
+        }
+    } else {
+        console.error(`Element with id "${id}" not found`);
     }
 }
 function disableBtn(id) {
     let el = document.querySelector(`#${id}`);
-    if (!el.classList.contains("disabled")) {
-        el.classList.add("disabled");
+    if (el) {  // Check if the element exists
+        if (!el.classList.contains("disabled")) {
+            el.classList.add("disabled");
+        }
+    } else {
+        console.error(`Element with id "${id}" not found`);
     }
 }
 
@@ -140,8 +148,8 @@ function snapShot() {
         .drawImage(data.videoEl, 0, 0, data.canvasEl.width, data.canvasEl.height);
     data.fileData = data.canvasEl.toDataURL("image/jpeg");
 
-    enableBtn("download");
-    enableBtn("share");
+    // enableBtn("download");
+    // enableBtn("share");
 }
 
 function stopVideoAndCanvas() {
@@ -175,49 +183,49 @@ function stop() {
     }
     enableBtn("camera");
     disableBtn("stop");
-    disableBtn("download");
+    // disableBtn("download");
     disableBtn("snapshot");
-    disableBtn("share");
+    // disableBtn("share");
 }
-function download() {
-    // cleanup any existing hidden links
-    let hiddenLinks = document.querySelectorAll(".hidden_links");
-    for (let hiddenLink of hiddenLinks) {
-        document.querySelector("body").remove(hiddenLink);
-    }
-
-    if (data.fileData) {
-        let a = document.createElement("a");
-        a.classList.add("hidden-link");
-        a.href = data.fileData;
-        a.textContent = "";
-        a.target = "_blank";
-        a.download = "photo.jpeg";
-        document.querySelector("body").append(a);
-        a.click();
-    }
-}
-
-async function share() {
-    // debugger
-    let blob = await (await fetch(data.fileData)).blob();
-    const filesArray = [
-        new File([blob], "snapshot.jpg", {
-            type: blob.type,
-            lastModified: new Date().getTime(),
-        }),
-    ];
-    const shareData = {
-        files: filesArray,
-    };
-    try {
-        await navigator.share(shareData);
-        alert("shared successfully");
-    } catch (error) {
-        alert("error attempting to share");
-        console.log(error);
-    }
-}
+// function download() {
+//     // cleanup any existing hidden links
+//     let hiddenLinks = document.querySelectorAll(".hidden_links");
+//     for (let hiddenLink of hiddenLinks) {
+//         document.querySelector("body").remove(hiddenLink);
+//     }
+//
+//     if (data.fileData) {
+//         let a = document.createElement("a");
+//         a.classList.add("hidden-link");
+//         a.href = data.fileData;
+//         a.textContent = "";
+//         a.target = "_blank";
+//         a.download = "photo.jpeg";
+//         document.querySelector("body").append(a);
+//         a.click();
+//     }
+// }
+//
+// async function share() {
+//     // debugger
+//     let blob = await (await fetch(data.fileData)).blob();
+//     const filesArray = [
+//         new File([blob], "snapshot.jpg", {
+//             type: blob.type,
+//             lastModified: new Date().getTime(),
+//         }),
+//     ];
+//     const shareData = {
+//         files: filesArray,
+//     };
+//     try {
+//         await navigator.share(shareData);
+//         alert("shared successfully");
+//     } catch (error) {
+//         alert("error attempting to share");
+//         console.log(error);
+//     }
+// }
 function flip() {
     const videoCanvasContainer = document.querySelector("#video-canvas");
     if (videoCanvasContainer.classList.contains("flex-row")) {
@@ -257,14 +265,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
         console.log("camera stop");
         stop();
     });
-    document.querySelector("#download").addEventListener("click", (e) => {
-        console.log("camera downlaod");
-        download();
-    });
-    document.querySelector("#share").addEventListener("click", (e) => {
-        console.log("camera share");
-        share();
-    });
+    // document.querySelector("#download").addEventListener("click", (e) => {
+    //     console.log("camera downlaod");
+    //     download();
+    // });
+    // document.querySelector("#share").addEventListener("click", (e) => {
+    //     console.log("camera share");
+    //     share();
+    // });
     document.querySelector("#flip").addEventListener("click", (e) => {
         console.log("camera flip");
         flip();
