@@ -57,18 +57,24 @@
                 for planting, or it can even produce seeds suited to
                 the specific environment you're in.
             </p>
+
+            <h3>jalla</h3>
         </div>
 
         <img class="right-tree" src="./images/tall-pines-tree.png" alt="Tall-pines-tree">
     </section>
 
     <section id="section3">
+        <div class="section3-header">
+            <div class="section3-head-text">
+                <h4>GAIASEED MATTERS.</h4>
+                <div class="section3-stats-container">
+                    <div class="section3-stat1">
 
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-
-    <div id="section3">
-
-    </div>
-
 </body>
 </html>
