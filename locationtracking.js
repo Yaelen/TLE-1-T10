@@ -81,7 +81,6 @@ function init() {
 //         name: "Beijing"
 //     }]);
 
-
     fetchData();
 }
 
@@ -98,23 +97,12 @@ function fetchData() {
 function getLocationSuccessHandler(data){
     console.log(data)
     data.data['editor.pointSeries'][5].geometry.coordinates.push(livelongitude,livelatitude)
+    createmap(data)
 
-    // data.data['editor.pointSeries'].bullets.push(function() {
-    //     var circle = am5.Circle.new(root, {
-    //         radius: 5,
-    //         fill: am5.color(0xff0000),
-    //         tooltipText: "{name}"
-    //     });
-    //
-    //     circle.events.on("click", function(ev) {
-    //         console.log(ev.target.dataItem);
-    //     });
-    //
-    //     return am5.Bullet.new(root, {
-    //         sprite: circle
-    //     });
-    // });
 
+}
+
+function createmap(data){
     am5viewer.create("chartdiv", data);
 }
 
