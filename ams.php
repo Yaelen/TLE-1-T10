@@ -3,17 +3,18 @@ session_start();
 /** @var mysqli $db */
 require_once 'includes/database.php';
 
-$query = "SELECT animal_picture FROM `gaia_animals`;";
+$query = "SELECT animal_picture, id, animal FROM `gaia_animals`;";
 
 $result = mysqli_query($db, $query)
 or die('Error '.mysqli_error($db).' with query '.$query);
 
-$animal_picture = [];
+$animal_info = [];
 //create array from database return
 while($row = mysqli_fetch_assoc($result))
 {
-    $animal_picture[] = $row;
+    $animal_info[] = $row;
 }
+//print_r(JSON_encode($animal_info));
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +44,9 @@ while($row = mysqli_fetch_assoc($result))
         }
     </style>
 </head>
+<!--<header>-->
+<!--    <div id="data">--><?php //echo JSON_encode($animal_info)  ?><!--</div>-->
+<!--</header>-->
 <body>
 <nav>
     <a href="index.php" id="logo">GAIA</a>
@@ -59,10 +63,10 @@ while($row = mysqli_fetch_assoc($result))
 
 <header>
     <section class="animals">
-        <div class="animals-circkels">
-            <?php for ($i = 0; $i < count($animal_picture); $i++) {?>
+        <div id="animals-circkels">
+            <?php for ($i = 0; $i < count($animal_info); $i++) {?>
                 <div class="animal-cirkel" id="animal-<?= $i ?>">
-                    <img class="cirkle-img" src="<?=$animal_picture[$i]['animal_picture']?>">
+                    <img class="cirkle-img" src="<?=$animal_info[$i]['animal_picture']?>" id="<?=$animal_info[$i]['id']?>">
                 </div>
             <?php } ?>
         </div>
@@ -71,8 +75,15 @@ while($row = mysqli_fetch_assoc($result))
     <section class="map">
         <div id="chartdiv"></div>
         <div id="animal">
-            <h2 class="animalname">PlaceHolder</h2>
-            <div id="animalinfo"></div>
+            <h2 id="animalname"></h2>
+            <div id="animalinfo">
+                <img class="info-img" id="animalImage" src="">
+                <p id="animal_information"></p>
+                <p id="age"></p>
+                <p id="dieet"></p>
+                <p id="park"></p>
+                <p id="population"></p>
+            </div>
         </div>
     </section>
 

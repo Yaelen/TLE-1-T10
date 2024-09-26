@@ -1,8 +1,18 @@
 window.addEventListener('load', init);
-let livelongitude= 0;
+let livelongitude = 0;
 let livelatitude = 0;
 let map;
+let animals;
+let animal_name
+let data
+let animal_image
+let animal_info
+let animal_age
+let animal_diet
+let animal_park
+let animal_population
 
+let animalData = [];
 
 function init() {
 //     // const chartdiv= document.getElementById('chartdiv')
@@ -80,42 +90,88 @@ function init() {
 //         lat: 40.072498,
 //         name: "Beijing"
 //     }]);
-
-    fetchData();
+//     data = JSON.parse(document.getElementById('data').textContent)
+//     console.log(data[0].animal)
+    fetchMapData();
+    fetchAnimalData();
+    animals = document.getElementById('animals-circkels');
+    animal_name = document.getElementById('animalname')
+    animal_image = document.getElementById('animalImage')
+    animal_info = document.getElementById('animal_information')
+    animal_age = document.getElementById('age')
+    animal_diet = document.getElementById('dieet')
+    animal_park = document.getElementById('park')
+    animal_population = document.getElementById('population')
+    // animal_name.innerHTML =
+    // console.log(animals)
+    animals.addEventListener('click', detailanimalClickHandler);
 }
 
-function fetchData() {
+function fetchMapData() {
     fetch('chartdiv.json') // replace with the URL where the JSON data is located
         .then(response => response.json())
         .then(getLocationSuccessHandler)
-            // // am5viewer.create("chartdiv", researchData)
-            // console.log()
         .catch(error => console.error('Error:', error));
 
 }
 
-function getLocationSuccessHandler(data){
-    console.log(data)
-    data.data['editor.pointSeries'][5].geometry.coordinates.push(livelongitude,livelatitude)
+function fetchAnimalData() {
+    fetch('./animal_json.php') // replace with the URL where the JSON data is located
+        .then(response => response.json())
+        .then(getAnimalDataSuccesHandler)
+        .catch(error => console.error('Error:', error));
+}
+
+function getAnimalDataSuccesHandler(animaldata) {
+    animalData = animaldata
+    console.log(animalData)
+}
+
+function detailanimalClickHandler(e) {
+    const target = e.target
+    if (target) {
+        // Get the animal name from the data attribute
+        const animal = target.getAttribute('id');
+        animalData.forEach(animal => {
+            if (animal.id === e.target.id) {
+                console.log(animal)
+                console.log(`Match found: ${animal.animal}`);
+                animal_name.innerHTML = animal.animal;
+                animal_image.src = animal.animal_picture
+                animal_info.innerHTML = animal.animal_information;
+                animal_age.innerHTML = `age: ${animal.age}`;
+                animal_diet.innerHTML = `diet: ${animal.dieet}`;
+                animal_park.innerHTML = `park: ${animal.park}`;
+                animal_population.innerHTML = `population: ${animal.population}`;
+            }
+        });
+        // animal_name.innerHTML = animalData[animal];
+    }// For debugging
+}
+
+function getLocationSuccessHandler(data) {
+    // console.log(data)
+    data.data['editor.pointSeries'][5].geometry.coordinates.push(livelongitude, livelatitude)
     createmap(data)
 
 
 }
 
-function createmap(data){
+function createmap(data) {
     am5viewer.create("chartdiv", data);
 }
 
-function pointClickHandler(){
-    console.log('ja')
-}
+//
+// function pointClickHandler(){
+//     console.log('ja')
+// }
 
 navigator.geolocation.getCurrentPosition(position => {
-    const { latitude, longitude } = position.coords;
+    const {latitude, longitude} = position.coords;
     // Show a map centered at latitude / longitude.
     livelongitude = longitude;
     livelatitude = latitude
-    console.log(livelatitude,livelongitude);
+    // console.log(livelatitude,livelongitude);
 });
 
 // const watchId = navigator.geolocation.watchPosition(position => {
