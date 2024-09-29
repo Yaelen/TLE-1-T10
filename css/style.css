@@ -586,3 +586,98 @@ p {
     opacity: 100%;
     height: auto;
 }
+
+
+
+
+
+/*Donation page*/
+
+.donate-header-background {
+    width: 100vw;
+    height: auto;
+    background-image: url("images/nature-background.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.top-donation-div {
+    display: flex;
+}
+
+.section1 {
+    width: 50vw;
+    height: 100vh;
+}
+
+.section2 {
+    width: 50vw;
+    height: 100vh;
+}
+
+.section3 {
+    width: 100vw;
+    height: 60vh;
+}
+
+.big-second-donation-div {
+    display: flex;
+}
+
+.section4 {
+    width: 30vw;
+    height: 100vh;
+}
+
+.small-second-donation-div {
+    width: 70vw;
+    height: 100vh;
+}
+
+.section5, section6 {
+    height: 50vh;
+}
+
+.bottom-donation-div {
+    display: flex;
+}
+
+.section2, .section4, .section8 {
+    background-color: beige;
+    color: black;
+}
+
+.section3, .section6 {
+    background-color: #ff9d73;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
