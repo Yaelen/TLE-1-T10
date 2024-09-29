@@ -3,28 +3,35 @@
 
 // Setup connection with database
 require_once 'includes/database.php';
-//require_once 'includes/authentication.php';
 
-//retrieve id from url
-//$id = mysqli_real_escape_string($db,$_GET['id']);
-//select all games from database
-$query = "SELECT * 
-            FROM animals ";
+// Check if form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the animal_id and donation amount from the form
+    $animal_id = intval($_POST['animal_id']);
+    $donation_amount = floatval($_POST['donation']);
 
-$result = mysqli_query($db, $query)
-or die('Error '.mysqli_error($db).' with query '.$query);
+    // Update the current_amount in the database
+    $update_query = "UPDATE animals 
+                     SET current_amount = current_amount + $donation_amount 
+                     WHERE id = $animal_id";
+    mysqli_query($db, $update_query) or die('Error '.mysqli_error($db));
+
+    // Redirect back to the donation page to avoid form resubmission
+    header("Location: donate.php");
+    exit;
+}
+
+// Query to select all animals from the database
+$query = "SELECT * FROM animals";
+$result = mysqli_query($db, $query) or die('Error '.mysqli_error($db));
 
 $animal_donation = [];
-//create array from database return
-while($row = mysqli_fetch_assoc($result))
-{
+while ($row = mysqli_fetch_assoc($result)) {
     $animal_donation[] = $row;
 }
-//close db
+
+// Close db connection
 mysqli_close($db);
-
-
-
 ?>
 
 <!doctype html>
@@ -57,15 +64,32 @@ mysqli_close($db);
     </header>
 </div>
 
-
-
 <?php foreach ($animal_donation as $animal) { ?>
-<section class="section<?= $animal['id'] ?>">
+    <section class="section<?= $animal['id'] ?>">
 
-    <h2 class="name<?= $animal['id'] ?>"> <?= $animal['name'] ?> </h2>
-    <p> <?= $animal['description'] ?> </p>
-    <img src="<?= $animal['image_url'] ?>">
-    <p> Goal:<?= $animal['goal'] ?> </p>
+        <h2 class="name<?= $animal['id'] ?>"> <?= $animal['name'] ?> </h2>
+        <p> <?= $animal['description'] ?> </p>
+        <img src="<?= $animal['image_url'] ?>" alt="<?= $animal['name'] ?>" alt=img-donation"<?= $animal['id'] ?>" >
+        <p> Goal: €<?= number_format($animal['goal'], 2) ?> </p>
+        <p> Current amount: €<span id="current-<?= $animal['id'] ?>"><?= number_format($animal['current_amount'], 2) ?></span> </p>
+
+        <!-- Progress bar -->
+        <div class="progress-bar" data-goal="<?= $animal['goal'] ?>">
+            <div class="progress" id="progress-<?= $animal['id'] ?>" style="width: <?= ($animal['current_amount'] / $animal['goal']) * 100 ?>%"></div>
+        </div>
+
+        <!-- Donation Form -->
+        <form action="donate.php" method="POST">
+            <input type="hidden" name="animal_id" value="<?= $animal['id'] ?>">
+            <label for="donation">Choose amount:</label>
+            <select name="donation" required>
+                <option value="10">€10</option>
+                <option value="50">€50</option>
+                <option value="100">€100</option>
+            </select>
+            <button type="submit">Submit Donation</button>
+        </form>
+
 </section>
 
 <?php } ?>
@@ -73,6 +97,26 @@ mysqli_close($db);
 </body>
 
 <script>
+    function submitDonation(animalId, amount) {
+        const formData = new FormData();
+        formData.append('animal_id', animalId);
+        formData.append('donation', amount);
+
+        fetch('donate.php', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json()).then(data => {
+            // Update progress bar and current amount
+            let currentAmount = document.getElementById('current-' + animalId);
+            let progress = document.getElementById('progress-' + animalId);
+            let newAmount = parseFloat(currentAmount.textContent.replace(',', '')) + amount;
+            currentAmount.textContent = newAmount.toFixed(2);
+
+            let goal = parseFloat(progress.parentElement.getAttribute('data-goal'));
+            progress.style.width = (newAmount / goal) * 100 + '%';
+        });
+    }
+
     const topDonationDiv = document.createElement('div');
     topDonationDiv.className = 'top-donation-div';
     const section1 = document.querySelector('.section1');

@@ -592,6 +592,12 @@ p {
 
 
 /*Donation page*/
+.donation-body {
+    margin: 0;
+    width: 100vw;
+}
+
+
 
 .donate-header-background {
     width: 100vw;
@@ -606,18 +612,18 @@ p {
 }
 
 .section1 {
-    width: 50vw;
-    height: 100vh;
+    width: 50%;
+    height: 100%;
 }
 
 .section2 {
-    width: 50vw;
-    height: 100vh;
+    width: 50%;
+    height: 100%;
 }
 
 .section3 {
-    width: 100vw;
-    height: 60vh;
+    width: 100%;
+    height: 60%;
 }
 
 .big-second-donation-div {
@@ -625,21 +631,24 @@ p {
 }
 
 .section4 {
-    width: 30vw;
-    height: 100vh;
+    width: 30%;
+    height: 100%;
 }
 
 .small-second-donation-div {
-    width: 70vw;
-    height: 100vh;
+    width: 70%;
+    height: 120%;
 }
 
 .section5, section6 {
-    height: 50vh;
+    height: 50%;
 }
 
 .bottom-donation-div {
     display: flex;
+}
+
+.section1, .section5, .section7 {
 }
 
 .section2, .section4, .section8 {
