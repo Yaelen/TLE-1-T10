@@ -68,10 +68,10 @@ mysqli_close($db);
     <section class="section<?= $animal['id'] ?>">
 
         <h2 class="name<?= $animal['id'] ?>"> <?= $animal['name'] ?> </h2>
-        <p> <?= $animal['description'] ?> </p>
+        <p class="description<?= $animal['id'] ?>"> <?= $animal['description'] ?> </p>
         <img src="<?= $animal['image_url'] ?>" alt="<?= $animal['name'] ?>" alt=img-donation"<?= $animal['id'] ?>" >
-        <p> Goal: €<?= number_format($animal['goal'], 2) ?> </p>
-        <p> Current amount: €<span id="current-<?= $animal['id'] ?>"><?= number_format($animal['current_amount'], 2) ?></span> </p>
+        <p class="goal<?= $animal['id'] ?>"> Goal: €<?= number_format($animal['goal'], 2) ?> </p>
+        <p class="current<?= $animal['id'] ?>"> Current amount: €<span id="current-<?= $animal['id'] ?>"><?= number_format($animal['current_amount'], 2) ?></span> </p>
 
         <!-- Progress bar -->
         <div class="progress-bar" data-goal="<?= $animal['goal'] ?>">
