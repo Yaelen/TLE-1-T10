@@ -32,31 +32,46 @@ mysqli_close($db);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <link rel="stylesheet" href="./css/style.css">
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">-->
+
+
     <title>Details [ALBUM NAME] | Music Collection</title>
 </head>
 <body>
+
+<style>
+    ul {
+        max-width: 500px;
+    }
+</style>
+
+
 <div class="container px-4">
     <div class="columns is-centered">
         <div class="column is-narrow">
-            <h2 class="title mt-4"> <?= $animal[0]['animal'] ?> details</h2>
+            <p>  <?= $animal[0]['animal'] ?> details</p>
             <section class="content">
+                <img src="<?= $animal[0]['animal_picture'] ?>" alt="picture of the animal" width="600" >
                 <ul>
-                    <li>Picture: <?= $animal[0]['animal_picture'] ?></li>
-                    <li>Information: <?= $animal[0]['animal_information'] ?> </li>
-                    <li>Park: <?= $animal[0]['park'] ?> </li>
-                    <li>Dieet: <?= $animal[0]['dieet'] ?> </li>
-                    <li>Population: <?= $animal[0]['population'] ?> </li>
+                    <li><p>Information: <?= $animal[0]['animal_information'] ?></p> </li>
+                    <li><p>Park: <?= $animal[0]['park'] ?> </p></li>
+                    <li><p>Dieet: <?= $animal[0]['dieet'] ?> </p></li>
+                    <li><p>Population: <?= $animal[0]['population'] ?></p> </li>
 
 
                 </ul>
             </section>
             <div>
-                <a class="button" href="index.php">Go back to the list</a>
+                <a class="button" href="ams.php">Go back to the list</a>
             </div>
         </div>
     </div>
 </div>
 
+
+
 </body>
 </html>
+
