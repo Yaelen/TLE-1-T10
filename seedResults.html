@@ -10,10 +10,12 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 <body>
     
 
-    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    <canvas id="myChart" style="width:100vw;max-width:1400px;height:50vh"></canvas>
+
+
 
     <script>
-    const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+    const xValues = ["Soil quality", "Humidity", "UV exposure", "Toxicity", "Argentina"];
 
     let  yValues = [55, 49, 44, 24, 15];
     yValues = yValues.map(() => Math.random() * 100); // random values between 0 and 99
@@ -36,6 +38,32 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
           text: "What da plant doin?"
         }
       }
+    });
+
+
+    const xValues2 = ["quality"];
+
+    let  yValues2 = [1];
+    yValues2 = yValues2.map(() => Math.random() * 100); // random values between 0 and 99
+
+    const barColors2 = ["red"];
+
+    new Chart("myChart2", {
+        type: "bar",
+        data: {
+            labels: xValues2,
+            datasets: [{
+                backgroundColor: barColors2,
+                data: yValues2
+            }]
+        },
+        options: {
+            legend: {display: false},
+            title: {
+                display: true,
+                text: "What da plant doin?"
+            }
+        }
     });
     </script>
     
