@@ -14,11 +14,14 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 
     <script>
     const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    const yValues = [55, 49, 44, 24, 15];
+
+    let  yValues = [55, 49, 44, 24, 15];
+    yValues = yValues.map(() => Math.random() * 100); // random values between 0 and 99
+
     const barColors = ["red", "green","blue","orange","brown"];
     
     new Chart("myChart", {
-      type: "bar",
+      type: "radar",
       data: {
         labels: xValues,
         datasets: [{
