@@ -58,35 +58,38 @@
 
     <div class="col text-center">
         <div class="p-1 mt-4">
-            <button id="camera" type="button" class="btn btn-primary btn-sm control">Start Camera</button>
+            <button id="camera" type="button" class="btn btn-primary btn-sm control w-100">Start Camera</button>
         </div>
     </div>
     <div class="d-flex justify-content-around mt-7">
         <div class="col text-center">
             <div class="p-2 border bg-light">
-                <button id="snapshot" type="button" class="btn btn-primary control">Scan</button>
+                <button id="snapshot" type="button" class="btn btn-primary control w-100">Scan</button>
             </div>
         </div>
         <div class="col text-center">
             <div class="p-2 border bg-light">
-                <button id="stop" type="button" class="btn btn-primary control">Stop Scan</button>
-            </div>
-        </div>
-        <div class="col text-center">
-            <div class="p-2 border bg-light">
-                <button id="history" type="button" class="btn btn-primary control" onclick="window.location.href='seedHistory.html'">History</button>
+                <button id="stop" type="button" class="btn btn-primary control w-100">Stop Scan</button>
             </div>
         </div>
     </div>
 
 
 
-<!--    <div class="row">-->
-<!--        <footer>-->
-<!--            <p class="col-md-6 mb-0 text-body-secondary text-center">© 2024 Gaia Seed</p>-->
-<!--        </footer>-->
-
-<!--    </div>-->
+    <footer class="gaia-seed-links">
+        <div class="gaia-seed-div">
+            <img src="images/scanning-device.png" alt="scan icon" class="img-scan-gaia-seed">
+            <a href="seedScan.html">SCAN</a>
+        </div>
+        <div class="gaia-seed-div">
+            <img src="images/map-position.png" alt="map icon" class="img-map-gaia-seed">
+            <a href="seedMap.html">MAP</a>
+        </div>
+        <div class="gaia-seed-div">
+            <img src="images/gallery.png" alt="history icon" class="img-history-gaia-seed">
+            <a href="seedHistory.html">HISTORY</a>
+        </div>
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
