@@ -148,8 +148,18 @@ function snapShot() {
         .drawImage(data.videoEl, 0, 0, data.canvasEl.width, data.canvasEl.height);
     data.fileData = data.canvasEl.toDataURL("image/jpeg");
 
+    // Save image to localStorage
+    saveImageToHistory(data.fileData);
+
     // enableBtn("download");
     // enableBtn("share");
+}
+
+// Function to save image to localStorage
+function saveImageToHistory(imageData) {
+    let historyImages = JSON.parse(localStorage.getItem('historyImages')) || [];
+    historyImages.push(imageData);
+    localStorage.setItem('historyImages', JSON.stringify(historyImages));
 }
 
 function stopVideoAndCanvas() {
