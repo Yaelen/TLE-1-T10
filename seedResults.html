@@ -6,11 +6,18 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body {
+            font-size: 30px;
+        }
+    </style>
 </head>
 <body>
     
 
     <canvas id="myChart" style="width:100vw;max-width:1400px;height:50vh"></canvas>
+    <canvas id="myChart2" style="width:100vw;max-width:1400px"></canvas>
+
 
 
 
@@ -21,23 +28,39 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     yValues = yValues.map(() => Math.random() * 100); // random values between 0 and 99
 
     const barColors = ["red", "green","blue","orange","brown"];
-    
+
     new Chart("myChart", {
-      type: "radar",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-        legend: {display: false},
-        title: {
-          display: true,
-          text: "What da plant doin?"
+        type: "radar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: {
+                display: false,
+                labels: {
+                    fontColor: 'red', // Legend text color
+                    fontSize: 16 // Legend text size
+                }
+            },
+            title: {
+                display: true,
+                text: "What da plant doin?",
+                fontColor: 'green', // Title text color
+                fontSize: 24, // Title text size
+                fontFamily: 'Arial' // Title font family
+            },
+            scale: {
+                ticks: {
+                    fontColor: 'black', // Scale tick color
+                    fontSize: 14, // Scale tick size
+                    fontFamily: 'Arial' // Scale tick font family
+                }
+            }
         }
-      }
     });
 
 
@@ -46,7 +69,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     let  yValues2 = [1];
     yValues2 = yValues2.map(() => Math.random() * 100); // random values between 0 and 99
 
-    const barColors2 = ["red"];
+    const barColors2 = ["blue"];
 
     new Chart("myChart2", {
         type: "bar",
