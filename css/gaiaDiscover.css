@@ -95,7 +95,7 @@ nav {
     flex-direction: column;
 
     & h3 {
-        margin: 15vh 9vw 3vh;
+        margin: 15vh 7vw 3vh;
     }
 }
 
@@ -103,7 +103,7 @@ nav {
     display: flex;
     overflow-x: auto;
     white-space: nowrap;
-    padding-left: 9vw;
+    padding-left: 7vw;
 } & img {
       object-fit: cover;
       height: 100%;

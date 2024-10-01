@@ -297,3 +297,8 @@ footer {
 .graph {
     padding: 200px;
 }
+
+#map {
+    height: 100vh;
+    width: 100vw;
+}
