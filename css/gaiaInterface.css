@@ -290,3 +290,10 @@ footer {
     margin: 0 0.5rem;
     padding: 1vh 7vw;
 }
+
+
+/*graph styling*/
+
+.graph {
+    padding: 200px;
+}

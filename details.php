@@ -37,7 +37,7 @@ mysqli_close($db);
 <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">-->
 
 
-    <title>Details [ALBUM NAME] | Music Collection</title>
+    <title>Details</title>
 </head>
 <body>
 
