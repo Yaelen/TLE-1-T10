@@ -58,9 +58,8 @@ mysqli_close($db);
         <a href="index.php" id="logo">GAIA</a>
     </nav>
 
-    <header>
-        <h1 class="donate-gaia-title">GAIA</h1>
-        <h1 class="gaia-donate-title">Donate</h1>
+    <header class="donation-header">
+        <h1 class="donate-gaia-title">GAIA<span class="gaia-donate-title">DONATE</span></h1>
     </header>
 </div>
 
