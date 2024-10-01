@@ -13,8 +13,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Step 2: Query the gaia_seeds table
-$sql = "SELECT id, plant_name, information, test FROM gaia_seeds";
+// Step 2: Query a random row from the gaia_seeds table
+$sql = "SELECT id, plant_name, information, test FROM gaia_seeds ORDER BY RAND() LIMIT 1";
 $result = $conn->query($sql);
 
 ?>
@@ -24,69 +24,130 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaia Seeds</title>
+    <link href="css/gaiaInterface.css" rel="stylesheet">
+    <title>Random Gaia Seed</title>
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
         }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%; /* Makes it fit well on mobile */
         }
-        th {
-            background-color: #f2f2f2;
-        }
+
         img {
-            max-width: 600px;
+            max-width: 100%;
             height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
+
+        h2 {
+            margin: 10px 0;
+            font-size: 28px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .btn {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .btn {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+        }
+
     </style>
 </head>
 <body>
 
-<h2>Gaia Seeds Information</h2>
-
-<?php
-// Step 3: Display the results
-if ($result->num_rows > 0) {
-    // Collapsible button to display the table
-    echo '<button class="collapsible">Gaia Seeds Data</button>';
-    echo '<div class="content">';
-    echo '<table class="table is-striped">';
-    echo '<thead><tr><th>ID</th><th>Plant Name</th><th>Information</th><th>Image</th><th>Edit</th><th>Delete</th></tr></thead>';
-    echo '<tbody>';
-
-    // Output data of each row
-    while ($row = $result->fetch_assoc()) {
-        echo '<tr>';
-        echo '<td>' . $row["id"] . '</td>';
-        echo '<td>' . $row["plant_name"] . '</td>';
-        echo '<td>' . $row["information"] . '</td>';
-        echo '<td>';
-
-        // If the 'test' column contains a valid image URL, display the image
-        if (!empty($row["test"])) {
-            echo '<img src="' . htmlspecialchars($row["test"]) . '" alt="Image of ' . htmlspecialchars($row["plant_name"]) . '" width="100">';
-        } else {
-            echo 'No image available';
+<div class="container">
+    <?php
+    // Step 3: Display the result (random row)
+    if ($result->num_rows > 0) {
+        // Output the random row
+        while ($row = $result->fetch_assoc()) {
+            echo '<img src="' . htmlspecialchars($row["test"]) . '" alt="Image of ' . htmlspecialchars($row["plant_name"]) . '">';
+            echo '<h2>' . htmlspecialchars($row["plant_name"]) . '</h2>';
+            echo '<p>' . htmlspecialchars($row["information"]) . '</p>';
         }
-        echo '</td>';
-        echo '</tr>';
+    } else {
+        echo "<p>No seeds found.</p>";
     }
 
-    echo '</tbody>';
-    echo '</table>';
-    echo '</div>';
-} else {
-    echo "0 results found.";
-}
+    // Step 4: Close the database connection
+    $conn->close();
+    ?>
 
-// Step 4: Close the database connection
-$conn->close();
-?>
+    <!-- Button under the text -->
+    <a href="https://media.makeameme.org/created/planting-seeds-to.jpg" class="btn">Synthesize Seed</a>
+</div>
 
+<footer class="gaia-seed-links">
+    <div class="gaia-seed-div" onclick="window.location.href='seedScan.html';">
+        <img src="images/scanning-device.png" alt="scan icon" class="img-scan-gaia-seed">
+        <a href="seedScan.html">SCAN</a>
+    </div>
+    <div class="gaia-seed-div" onclick="window.location.href='seedMap.html';">
+        <img src="images/map-position.png" alt="map icon" class="img-map-gaia-seed">
+        <a href="seedMap.html">MAP</a>
+    </div>
+    <div class="gaia-seed-div" onclick="window.location.href='seedHistory.html';">
+        <img src="images/gallery.png" alt="history icon" class="img-history-gaia-seed">
+        <a href="seedHistory.html">HISTORY</a>
+    </div>
+</footer>
 
 </body>
 </html>
