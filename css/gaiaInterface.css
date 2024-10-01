@@ -295,5 +295,7 @@ footer {
 /*graph styling*/
 
 .graph {
-    padding: 200px;
+    padding: 20px;
+    margin-top: 200px;
+    background-color: white;
 }
