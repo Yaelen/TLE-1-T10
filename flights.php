@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,10 +32,10 @@
         <h3>DESTINATIONS</h3>
         <div class="destinations-card-container">
             <div class="destinations-card"><img src="./images/discover-images/destination1.jpg" alt="denali mountains sunrise"></div>
-            <div class="destinations-card"></div>
-            <div class="destinations-card"></div>
-            <div class="destinations-card"></div>
-            <div class="destinations-card"></div>
+            <div class="destinations-card"><img src="./images/lake.jpg" alt="denali mountains sunrise"></div>
+            <div class="destinations-card"><img src="./images/mangrove.jpg" alt="denali mountains sunrise"></div>
+            <div class="destinations-card"><img src="./images/amazone.webp" alt="denali mountains sunrise"></div>
+            <div class="destinations-card"><img src="./images/mount.jpg" alt="denali mountains sunrise"></div>
         </div>
     </section>
 </body>
