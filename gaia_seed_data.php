@@ -51,26 +51,34 @@ $result = $conn->query($sql);
 <?php
 // Step 3: Display the results
 if ($result->num_rows > 0) {
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Plant Name</th><th>Information</th><th>Image</th></tr>";
+    // Collapsible button to display the table
+    echo '<button class="collapsible">Gaia Seeds Data</button>';
+    echo '<div class="content">';
+    echo '<table class="table is-striped">';
+    echo '<thead><tr><th>ID</th><th>Plant Name</th><th>Information</th><th>Image</th><th>Edit</th><th>Delete</th></tr></thead>';
+    echo '<tbody>';
 
     // Output data of each row
     while ($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>" . $row["id"] . "</td>
-                <td>" . $row["plant_name"] . "</td>
-                <td>" . $row["information"] . "</td>
-                <td>";
+        echo '<tr>';
+        echo '<td>' . $row["id"] . '</td>';
+        echo '<td>' . $row["plant_name"] . '</td>';
+        echo '<td>' . $row["information"] . '</td>';
+        echo '<td>';
+
         // If the 'test' column contains a valid image URL, display the image
         if (!empty($row["test"])) {
-            echo '<img src="' . htmlspecialchars($row["test"]) . '" alt="Image of ' . htmlspecialchars($row["plant_name"]) . '">';
+            echo '<img src="' . htmlspecialchars($row["test"]) . '" alt="Image of ' . htmlspecialchars($row["plant_name"]) . '" width="100">';
         } else {
             echo 'No image available';
         }
-        echo "</td></tr>";
+        echo '</td>';
+        echo '</tr>';
     }
 
-    echo "</table>";
+    echo '</tbody>';
+    echo '</table>';
+    echo '</div>';
 } else {
     echo "0 results found.";
 }
@@ -78,6 +86,7 @@ if ($result->num_rows > 0) {
 // Step 4: Close the database connection
 $conn->close();
 ?>
+
 
 </body>
 </html>
