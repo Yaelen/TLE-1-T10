@@ -1,49 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="css/gaiaInterface.css" rel="stylesheet">
+
 </head>
 <body>
-    
 
+
+<div class="graph">
     <canvas id="myChart" style="width:100vw;max-width:1400px;height:50vh"></canvas>
 
+    <!--    <canvas id="myChart2" style="width:100vw;max-width:1400px;height:50vh"></canvas>-->
+</div>
 
-
-    <script>
+<script>
     const xValues = ["Soil quality", "Humidity", "UV exposure", "Toxicity", "Argentina"];
 
-    let  yValues = [55, 49, 44, 24, 15];
+    let yValues = [55, 49, 44, 24, 15];
     yValues = yValues.map(() => Math.random() * 100); // random values between 0 and 99
 
-    const barColors = ["red", "green","blue","orange","brown"];
-    
+    const barColors = ["red", "green", "blue", "orange", "brown"];
+
+
     new Chart("myChart", {
-      type: "radar",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-        legend: {display: false},
-        title: {
-          display: true,
-          text: "What da plant doin?"
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues,
+                borderWidth: 1
+
+            }]
+        },
+        options: {
+            legend: {display: false},
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: 'black', // Change Y-axis tick color
+                        fontSize: 36 // Change Y-axis tick font size
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: 'black', // Change X-axis tick color
+                        fontSize: 36 // Change X-axis tick font size
+                    }
+                }]
+            }
         }
-      }
     });
 
 
     const xValues2 = ["quality"];
 
-    let  yValues2 = [1];
+    let yValues2 = [1];
     yValues2 = yValues2.map(() => Math.random() * 100); // random values between 0 and 99
 
     const barColors2 = ["red"];
@@ -65,9 +82,22 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
             }
         }
     });
-    </script>
-    
+</script>
 
+<footer class="gaia-seed-links">
+    <div class="gaia-seed-div">
+        <img src="images/scanning-device.png" alt="scan icon" class="img-scan-gaia-seed">
+        <a href="seedScan.html">SCAN</a>
+    </div>
+    <div class="gaia-seed-div">
+        <img src="images/map-position.png" alt="map icon" class="img-map-gaia-seed">
+        <a href="seedMap.html">MAP</a>
+    </div>
+    <div class="gaia-seed-div">
+        <img src="images/gallery.png" alt="history icon" class="img-history-gaia-seed">
+        <a href="seedHistory.html">HISTORY</a>
+    </div>
+</footer>
 
 </body>
 </html>
