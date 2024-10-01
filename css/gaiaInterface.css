@@ -1,9 +1,76 @@
+/*Strawford used for general text*/
+@font-face {
+    font-family: 'Strawford';
+    src: url('../css/fonts/strawford-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Strawford';
+    src: url('../css/fonts/strawford-regular-webfont.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Strawford';
+    src: url('../css/fonts/strawford-regularitalic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Strawford';
+    src: url('../css/fonts/strawford-regularitalic-webfont.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*Ade font, used for logo and some headers*/
+@font-face {
+    font-family: 'Ade';
+    src: url('../css/fonts/AdeDisplay.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ade';
+    src: url('../css/fonts/AdeDisplay.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ade';
+    src: url('../css/fonts/AdeDisplay.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Ade';
+    src: url('../css/fonts/AdeDisplay.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+
+
+
+
+
+
 /* General styles */
 body, html {
     /*height: 100%;*/
     margin: 0;
     font-family: "Roboto", sans-serif;
     font-weight: 300;
+    background-color: #434343;
+    font-size: 10px;
 }
 
 main {
@@ -29,6 +96,32 @@ h1 {
 }
 
 .gaia-seed-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gaia-seed-index-h1 {
+    font-size: 10rem;
+    color: white;
+    font-family: Ade;
+    line-height: 6rem;
+    text-shadow: 0.5rem 0.5rem rgba(0, 0, 0, 50%);
+}
+
+.gaia-seed-index-h2 {
+    font-size: 6rem;
+    color: white;
+    font-family: Strawford;
+    text-shadow: 0.5rem 0.5rem rgba(0, 0, 0, 50%);
+}
+
+.gaia-seed-index-h3 {
+    font-size: 3rem;
+    color: white;
+    font-family: Strawford;
+    text-shadow: 0.5rem 0.5rem rgba(0, 0, 0, 50%);
 }
 
 .gaia-seed-links {
@@ -46,6 +139,7 @@ h1 {
 .gaia-seed-links a {
     color: black;
     text-decoration: none;
+    font-size: 2rem;
 }
 
 .gaia-seed-div {
@@ -82,6 +176,38 @@ video {
 
 .camera .row {
     height: auto; /* Allow dynamic height */
+}
+
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #193f12;
+    border-color: #122c0d;
+    font-family: Strawford;
+    font-size: 2rem;
+    padding: 1rem 3rem;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #193f12;
+    border-color: #122c0d;
+}
+
+.btn-primary:active {
+    color: #fff;
+    background-color: #193f12;
+    border-color: #122c0d;
+}
+
+.bg-light {
+    background-color: transparent !important;
+}
+
+.border {
+    border: 1px solid transparent !important;
 }
 
 /* Buttons */
@@ -155,4 +281,12 @@ footer {
 /* Ensure buttons have proper spacing */
 .controls-container .d-flex {
     gap: 1rem; /* Add spacing between buttons */
+}
+
+
+
+.control {
+    text-align: center;
+    margin: 0 0.5rem;
+    padding: 1vh 7vw;
 }
