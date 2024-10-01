@@ -291,7 +291,9 @@ footer {
     padding: 1vh 7vw;
 }
 
-#map {
-    height: 100vh;
-    width: 100vw;
+
+/*graph styling*/
+
+.graph {
+    padding: 200px;
 }
