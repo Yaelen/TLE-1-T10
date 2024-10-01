@@ -1,3 +1,19 @@
+<?php
+session_start();
+/** @var mysqli $db */
+require_once 'includes/database.php';
+
+// Fetch all products from the database
+$query = "SELECT * FROM `gaia_products`;";
+$result = mysqli_query($db, $query) or die('Error ' . mysqli_error($db) . ' with query ' . $query);
+
+$products = [];
+// Create array from database result
+while ($row = mysqli_fetch_assoc($result)) {
+    $products[] = $row;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,13 +21,112 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Discover GAIA</title>
+    <title>Shop GAIA</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/gaiaDiscover.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: Black;
+        }
+
+        h1 {
+            text-align: center;
+            color:white;
+            margin: 20px 0;
+        }
+
+        .container {
+            display: flex;
+            margin: 20px;
+        }
+
+        .filter {
+            width: 20%;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0; /* Sticks the filter to the top when you scroll */
+            height: 100vh; /* Optional: makes the filter take full viewport height */
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        .filter h3 {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .filter ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .filter ul li {
+            margin: 10px 0;
+        }
+
+        .filter ul li a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .filter ul li a:hover {
+            color: #007bff;
+        }
+
+        .products {
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product {
+            width: 30%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 500px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        .product h4 {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .product p.price {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
 
 </head>
 
-<body class="frontpage-body">
+<body>
 
 <nav>
     <div class="links">
@@ -24,8 +139,37 @@
     <a href="index.php" id="logo">GAIA</a>
 </nav>
 
-<header class="frontpage">
+<header>
+    <h1>Welcome to GAIA Shop</h1>
 </header>
+
+<div class="container">
+    <div class="filter">
+        <h3>Filter by Product Type</h3>
+        <ul>
+            <li><a href="shop.php?type=all">All</a></li>
+            <li><a href="shop.php?type=T-Shirt">T-Shirts</a></li>
+            <li><a href="shop.php?type=Hoodie">Hoodies</a></li>
+            <li><a href="shop.php?type=Longsleeve">Longsleeves</a></li>
+            <li><a href="shop.php?type=Baby Clothes">Baby Clothes</a></li>
+            <li><a href="shop.php?type=Hat">Hats</a></li>
+            <li><a href="shop.php?type=Reusable">Reusable Items</a></li>
+        </ul>
+    </div>
+
+    <div class="products">
+        <?php
+        foreach ($products as $product) {
+            echo '<div class="product">';
+            echo '<div class="product-image" style="background-image: url(./images/products/' . $product['id'] . '.png);"></div>';
+            echo '<h4>' . $product['name'] . '</h4>';
+            echo '<p>' . $product['description'] . '</p>';
+            echo '<p>Price: €' . $product['price'] . '</p>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+</div>
 
 </body>
 </html>
