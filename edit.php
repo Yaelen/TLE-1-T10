@@ -1,181 +1,127 @@
 <?php
 /** @var mysqli $db */
 
-// Setup connection with database
+// Setup connection with the database
 require_once 'includes/database.php';
 require_once 'includes/authentication.php';
 
-//pseudocode - edit
+// Retrieve genre id from URL
+$id = mysqli_real_escape_string($db, $_GET['id']);
 
-//retrieve genre id form url
-
-//fetch game details from database based on id
-
-//extract game details: name, studio, year and associated genre ids
-
-$id = mysqli_real_escape_string($db,$_GET['id']);
+// Fetch animal details from the database based on the id
 $query = "SELECT * FROM gaia_animals WHERE id = $id";
+$result = mysqli_query($db, $query) or die('Error ' . mysqli_error($db) . ' with query ' . $query);
 
-$result = mysqli_query($db, $query)
-or die('Error '.mysqli_error($db).' with query '.$query);
+// Fetch data into an associative array
+$animal = mysqli_fetch_assoc($result);
 
-$games = [];
-//create array from database return
-while($row = mysqli_fetch_assoc($result))
-{
-    $games[] = $row;
+// Check if the animal was found
+if (!$animal) {
+    die('Animal not found');
 }
 
+// Initialize form data variables
+$name = $animal['animal'] ?? '';
+$picture = $animal['animal_picture'] ?? '';
+$information = $animal['animal_information'] ?? '';
+$park = $animal['park'] ?? '';
+$dieet = $animal['dieet'] ?? '';
+$population = $animal['population'] ?? '';
 
+$errors = [];
 
-
-
-
-
-
-//if form submitted
-//	validate form
-if(isset($_POST['submit'])) {
-
-    //get form data
+// If form submitted
+if (isset($_POST['submit'])) {
+    // Get form data
     $name = mysqli_real_escape_string($db, $_POST['animal']);
     $picture = mysqli_real_escape_string($db, $_POST['animal_picture']);
-    $age = mysqli_real_escape_string($db, $_POST['age']);
     $information = mysqli_real_escape_string($db, $_POST['animal_information']);
     $park = mysqli_real_escape_string($db, $_POST['park']);
     $dieet = mysqli_real_escape_string($db, $_POST['dieet']);
     $population = mysqli_real_escape_string($db, $_POST['population']);
 
-
-
-
-
-
-    $errors = [];
-
-
-//	if error
-//		show errors at correct input field
-    if ($name == ""){
-        $errors['animal'] = "fill in name";
+    // Validate form data
+    if (empty($name)) {
+        $errors['animal'] = "Fill in the name";
     }
 
-    if ($picture == ""){
-        $errors['picture'] = "fill in studio";
+    if (empty($picture)) {
+        $errors['picture'] = "Fill in the picture URL";
     }
 
-    if ($information == ""){
-        $errors['information'] = "fill in genre";
+    if (empty($information)) {
+        $errors['information'] = "Fill in information";
     }
 
+    if (empty($park)) {
+        $errors['park'] = "Fill in the park name";
+    }
 
-//	if no errors
-//		update game details in database
-//		delete genre associations for game
-//		insert new genre associations for game
+    if (empty($dieet)) {
+        $errors['dieet'] = "Fill in the diet information";
+    }
 
+    if (empty($population)) {
+        $errors['population'] = "Fill in the population number";
+    }
 
+    // If no errors, update the animal details in the database
     if (empty($errors)) {
-//		INSERT query opbouwen
-        $query = "UPDATE gaia_animals SET animal = '$name', animal_information = '$information', park = '$park' , dieet = '$dieet' , population = '$population' WHERE gaia_animals.id = '$id';";
-//		Query uitvoeren op de database
-        $result = mysqli_query($db, $query)
-        or die('Error '.mysqli_error($db).' with query '.$query);
+        $query = "UPDATE gaia_animals 
+                  SET animal = '$name', animal_picture = '$picture', animal_information = '$information', park = '$park', dieet = '$dieet', population = '$population' 
+                  WHERE id = '$id'";
+        $result = mysqli_query($db, $query) or die('Error ' . mysqli_error($db) . ' with query ' . $query);
 
-//		redirect to index
+        // Redirect to the index page
         header("Location: index.php");
         exit();
-
-
-    } else {
-
-//		DB sluiten
-
-        mysqli_close($db);
-
     }
-
-
 }
 
-
-
-//if form not submitted
-//	show form filled with previous inputs
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Close the database connection
+mysqli_close($db);
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <title>Muziekalbums - Create</title>
+    <title>Edit Animal</title>
 </head>
 <body>
 <div class="container px-4">
-
     <section class="columns is-centered">
         <div class="column is-10">
-            <h2 class="title mt-4">Edit game: </h2>
-
+            <h2 class="title mt-4">Edit Animal:</h2>
             <form class="column is-6" action="" method="post">
+                <label class="label" for="animal">Name</label>
+                <input class="input" id="animal" type="text" name="animal" value="<?= htmlspecialchars($name) ?>"/>
+                <p class="help is-danger"><?= $errors['animal'] ?? '' ?></p>
 
+                <label class="label" for="animal_picture">Picture URL</label>
+                <input class="input" id="animal_picture" type="text" name="animal_picture" value="<?= htmlspecialchars($picture) ?>"/>
+                <p class="help is-danger"><?= $errors['picture'] ?? '' ?></p>
 
+                <label class="label" for="animal_information">Information</label>
+                <input class="input" id="animal_information" type="text" name="animal_information" value="<?= htmlspecialchars($information) ?>"/>
+                <p class="help is-danger"><?= $errors['information'] ?? '' ?></p>
 
-                <label class="label" for="name">Name</label>
-                <input class="input" id="name" type="text" name="name" value="<?= $name[0]['name'] ?>"/>
-                <p class="help is-danger">
-                    <?= $errors['name'] ?? '' ?>
+                <label class="label" for="park">Park</label>
+                <input class="input" id="park" type="text" name="park" value="<?= htmlspecialchars($park) ?>"/>
+                <p class="help is-danger"><?= $errors['park'] ?? '' ?></p>
 
-                </p>
+                <label class="label" for="dieet">Diet</label>
+                <input class="input" id="dieet" type="text" name="dieet" value="<?= htmlspecialchars($dieet) ?>"/>
+                <p class="help is-danger"><?= $errors['dieet'] ?? '' ?></p>
 
-
-                <label class="label" for="studio">Location</label>
-                <input class="input" id="studio" type="text" name="studio" value="<?= $location[0]['studio'] ?>"/>
-                <p class="help is-danger">
-                    <?= $errors['studio'] ?? '' ?>
-                </p>
-
-
-                <label class="label" for="genre">radio</label>
-                <input id="genre" type="radio" name="genre" value=" "/>
-                <p class="help is-danger">
-                    <?= $errors['genre'] ?? '' ?>
-                </p>
-
-
-                <label class="label" for="year">Information</label>
-                <input class="input" id="year" type="text" name="year" value="<?= $information[0]['year'] ?>"/>
-                <p class="help is-danger">
-                    <?= $errors['year'] ?? '' ?>
-                </p>
-
-
-
-
+                <label class="label" for="population">Population</label>
+                <input class="input" id="population" type="number" name="population" value="<?= htmlspecialchars($population) ?>"/>
+                <p class="help is-danger"><?= $errors['population'] ?? '' ?></p>
 
                 <button class="button is-link is-fullwidth" type="submit" name="submit">Save</button>
-
             </form>
-
             <a class="button mt-4" href="index.php">&laquo; Go back to the list</a>
         </div>
     </section>
