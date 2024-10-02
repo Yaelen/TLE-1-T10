@@ -294,8 +294,37 @@ footer {
 
 /*graph styling*/
 
+
+#resultsTitle {
+    margin-top: 200px;
+    font-size: 100px;
+    color: white;
+}
+
 .graph {
     padding: 20px;
+    margin: 50px;
+    background-color: lightgray;
+    border-radius: 30px;
     margin-top: 200px;
-    background-color: white;
+
+
+}
+
+.generate {
+
+    align-self: center;
+
+    background-color: forestgreen;
+    border-radius: 30px;
+    padding: 40px;
+    margin: 50px;
+    margin-top: 200px;
+
+}
+
+.generate a {
+    font-size: 30px;
+    text-decoration: none   ;
+    color: white;
 }

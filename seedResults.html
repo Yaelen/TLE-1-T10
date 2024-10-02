@@ -13,14 +13,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.js"></script>
 
+<h1 id="resultsTitle">Results</h1>
+
 <div class="graph">
     <canvas id="chart"></canvas>
 </div>
-
-
-
-
-
 
 
 <script>
@@ -30,10 +27,10 @@
     const chart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['A', 'B', 'C'],
+            labels: ['H2O', 'O2', 'UV'],
             datasets: [{
-                label: 'Easy as',
-                data: [1, 2, 3],
+                label: 'Analysis',
+                data: [Math.random() * 100, Math.random() * 100, Math.random() * 100],
                 backgroundColor: '#218c00',
             }],
         },
@@ -42,14 +39,41 @@
             responsive: true,
             scales: {
                 y: {
-                    ticks: { color: 'green', beginAtZero: true }
+                    ticks: {
+                        color: 'green',
+                        beginAtZero: true,
+                        font: {
+                            size: 30, // set the font size for x-axis labels
+                        }
+                    },
+
                 },
                 x: {
-                    ticks: { color: 'red', beginAtZero: true }
+                    ticks: {
+                        color: 'black',
+                        beginAtZero: true,
+                        font: {
+                            size: 30, // set the font size for x-axis labels
+                        }
+                    },
+
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+
+
+                        // This more specific font property overrides the global property
+                        font: {
+                            size: 40
+                        }
+                    }
                 }
             }
         }
     });
+
 
 
 
@@ -127,6 +151,11 @@
 
 
 </script>
+
+<div class="generate">
+<a href="seedSeed.php" ><h1>Generate seed</h1></a>
+</div>
+
 
 <footer class="gaia-seed-links">
     <div class="gaia-seed-div" onclick="window.location.href='seedScan.html';">
