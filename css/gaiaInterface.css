@@ -162,7 +162,7 @@ h1 {
 canvas, video {
     display: block;
     max-width: 100%;
-    height: auto; /* Maintain aspect ratio */
+    height: 50vh; /* Maintain aspect ratio */
     object-fit: cover;
 }
 
