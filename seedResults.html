@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<script
-        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-</script>
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -12,77 +10,152 @@
 <body>
 
 
-<div class="graph">
-    <canvas id="myChart" style="width:100vw;max-width:1400px;height:50vh"></canvas>
 
-    <!--    <canvas id="myChart2" style="width:100vw;max-width:1400px;height:50vh"></canvas>-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.js"></script>
+
+<h1 id="resultsTitle">Results</h1>
+
+<div class="graph">
+    <canvas id="chart"></canvas>
 </div>
 
+
 <script>
-    const xValues = ["Soil quality", "Humidity", "UV exposure", "Toxicity", "Argentina"];
-
-    let yValues = [55, 49, 44, 24, 15];
-    yValues = yValues.map(() => Math.random() * 100); // random values between 0 and 99
-
-    const barColors = ["red", "green", "blue", "orange", "brown"];
 
 
-    new Chart("myChart", {
-        type: "bar",
+    const ctx = document.getElementById('chart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
         data: {
-            labels: xValues,
+            labels: ['H2O', 'O2', 'UV'],
             datasets: [{
-                backgroundColor: barColors,
-                data: yValues,
-                borderWidth: 1
-
-            }]
+                label: 'Analysis',
+                data: [Math.random() * 100, Math.random() * 100, Math.random() * 100],
+                backgroundColor: '#218c00',
+            }],
         },
         options: {
-            legend: {display: false},
+            indexAxis: 'y', // <-- here
+            responsive: true,
             scales: {
-                yAxes: [{
+                y: {
                     ticks: {
-                        fontColor: 'black', // Change Y-axis tick color
-                        fontSize: 36 // Change Y-axis tick font size
-                    }
-                }],
-                xAxes: [{
+                        color: 'green',
+                        beginAtZero: true,
+                        font: {
+                            size: 30, // set the font size for x-axis labels
+                        }
+                    },
+
+                },
+                x: {
                     ticks: {
-                        fontColor: 'black', // Change X-axis tick color
-                        fontSize: 36 // Change X-axis tick font size
+                        color: 'black',
+                        beginAtZero: true,
+                        font: {
+                            size: 30, // set the font size for x-axis labels
+                        }
+                    },
+
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+
+
+                        // This more specific font property overrides the global property
+                        font: {
+                            size: 40
+                        }
                     }
-                }]
+                }
             }
         }
     });
 
 
-    const xValues2 = ["quality"];
 
-    let yValues2 = [1];
-    yValues2 = yValues2.map(() => Math.random() * 100); // random values between 0 and 99
 
-    const barColors2 = ["red"];
 
-    new Chart("myChart2", {
-        type: "bar",
-        data: {
-            labels: xValues2,
-            datasets: [{
-                backgroundColor: barColors2,
-                data: yValues2
-            }]
-        },
-        options: {
-            legend: {display: false},
-            title: {
-                display: true,
-                text: "What da plant doin?"
-            }
-        }
-    });
+
+
+
+
+    <!--    -->
+//     const xValues = ["Soil quality", "Humidity", "UV exposure", "Toxicity", "Argentina"];
+//
+//     let yValues = [55, 49, 44, 24, 15];
+//     yValues = yValues.map(() => Math.random() * 100); // random values between 0 and 99
+//
+//     const barColors = ["red", "green", "blue", "orange", "brown"];
+//
+//
+//
+//     new Chart("myChart", {
+//         type: "bar",
+//         data: {
+//             labels: xValues,
+//             datasets: [{
+//                 axis: 'y',
+//                 backgroundColor: barColors,
+//                 data: yValues,
+//                 borderWidth: 1
+//
+//             }]
+//         },
+//         options: {
+//             indexAxis: 'y',
+//             scales: {
+//                 yAxes: [{
+//                     ticks: {
+//                         fontColor: 'black', // Change Y-axis tick color
+//                         fontSize: 50 // Change Y-axis tick font size
+//                     }
+//                 }],
+//                 xAxes: [{
+//                     ticks: {
+//                         fontColor: 'black', // Change X-axis tick color
+//                         fontSize: 50 // Change X-axis tick font size
+//                     }
+//                 }]
+//             }
+//         }
+//     });
+//
+//
+//    const xValues2 = ["quality"];
+//
+//    let yValues2 = [1];
+//    yValues2 = yValues2.map(() => Math.random() * 100); // random values between 0 and 99
+//
+//    const barColors2 = ["red"];
+//
+//    new Chart("myChart2", {
+//        type: "bar",
+//        data: {
+//            labels: xValues2,
+//            datasets: [{
+//                backgroundColor: barColors2,
+//                data: yValues2
+//            }]
+//        },
+//        options: {
+//            legend: {display: false},
+//            title: {
+//                display: true,
+//                text: "What da plant doin?"
+//            }
+//        }
+//    });
+
+
 </script>
+
+<div class="generate">
+<a href="gaia_seed_data.php" ><h1>Generate seed</h1></a>
+</div>
+
 
 <footer class="gaia-seed-links">
     <div class="gaia-seed-div" onclick="window.location.href='seedScan.html';">

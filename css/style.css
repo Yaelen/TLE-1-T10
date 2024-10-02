@@ -587,6 +587,11 @@ p {
     height: auto;
 }
 
+.shopbg{
+    background-image: url("../images/Artboard_8_1.png");
+    background-size: 100vw;
+}
+
 
 
 
