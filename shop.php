@@ -4,7 +4,16 @@ session_start();
 require_once 'includes/database.php';
 
 // Fetch all products from the database
-$query = "SELECT * FROM `gaia_products`;";
+// Check if a filter is applied through the URL, default to 'all'
+$type = isset($_GET['type']) ? mysqli_real_escape_string($db, $_GET['type']) : 'all';
+
+// Adjust the query based on the filter
+if ($type === 'all') {
+    $query = "SELECT * FROM `gaia_products`;";
+} else {
+    $query = "SELECT * FROM `gaia_products` WHERE `type` = '$type';";
+}
+
 $result = mysqli_query($db, $query) or die('Error ' . mysqli_error($db) . ' with query ' . $query);
 
 $products = [];
@@ -12,6 +21,7 @@ $products = [];
 while ($row = mysqli_fetch_assoc($result)) {
     $products[] = $row;
 }
+
 ?>
 
 <!doctype html>
@@ -48,10 +58,13 @@ while ($row = mysqli_fetch_assoc($result)) {
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             position: sticky;
-            top: 0; /* Sticks the filter to the top when you scroll */
-            height: 100vh; /* Optional: makes the filter take full viewport height */
+            top: 0;
+            height: 100vh;
             overflow-y: auto;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
         }
 
         .filter h3 {
@@ -85,6 +98,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             padding: 10px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            align-items: flex-start; /* Prevent stretching */
         }
 
         .product {
@@ -95,6 +109,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 10px;
             text-align: center;
+            min-height: 600px;
         }
 
         .product-image {
@@ -140,7 +155,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 </nav>
 
 <header>
-    <h1>Welcome to GAIA Shop</h1>
+    <h1>GAIA SHOP</h1>
 </header>
 
 <div class="container">
@@ -148,9 +163,11 @@ while ($row = mysqli_fetch_assoc($result)) {
         <h3>Filter by Product Type</h3>
         <ul>
             <li><a href="shop.php?type=all">All</a></li>
-            <li><a href="shop.php?type=T-Shirt">T-Shirts</a></li>
+            <li><a href="shop.php?type=T-Shirt Women">T-Shirts Women</a></li>
+            <li><a href="shop.php?type=T-Shirt Men">T-Shirts Men</a></li>
             <li><a href="shop.php?type=Hoodie">Hoodies</a></li>
-            <li><a href="shop.php?type=Longsleeve">Longsleeves</a></li>
+            <li><a href="shop.php?type=Longsleeve Women">Longsleeve Women</a></li>
+            <li><a href="shop.php?type=Longsleeve Men">Longsleeve Men</a></li>
             <li><a href="shop.php?type=Baby Clothes">Baby Clothes</a></li>
             <li><a href="shop.php?type=Hat">Hats</a></li>
             <li><a href="shop.php?type=Reusable">Reusable Items</a></li>

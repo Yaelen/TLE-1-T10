@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2024 at 02:27 PM
+-- Generation Time: Oct 01, 2024 at 07:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,14 +41,14 @@ CREATE TABLE `animals` (
 --
 
 INSERT INTO `animals` (`id`, `name`, `description`, `goal`, `current_amount`, `image_url`) VALUES
-(1, 'Woolly Mammoth', 'By grazing on shrubs and knocking down trees, woolly mammoths could help restore the tundra and grassland ecosystems, promoting plant growth and reducing greenhouse gases like CO2 trapped in the permafrost.', 20000000.00, 0.00, './images/Woolly Mammoth.png'),
-(2, 'Passenger Pigeon', 'As migratory birds, passenger pigeons played a crucial role in forest regeneration by spreading seeds over vast areas, fostering biodiversity, and maintaining healthy forest ecosystems.', 5000000.00, 0.00, './images/Passenger Pigeon.png'),
-(3, 'Steller’s Sea Cow', 'The Steller\'s sea cow was essential for maintaining kelp forest ecosystems by grazing on kelp, which prevented overgrowth and helped maintain the balance of marine environments in the North Pacific.', 12000000.00, 0.00, './images/Steller.png'),
-(4, 'Great Auk', 'This flightless seabird contributed to the balance of coastal ecosystems by feeding on fish and other marine life, supporting nutrient cycles that benefit a wide range of marine species.', 7000000.00, 0.00, './images/Great Auk.png'),
-(5, 'Tasmanian Tiger', 'Reintroducing the thylacine could help rebalance predator-prey dynamics in Australian ecosystems, where the loss of top predators has led to overpopulation of herbivores and environmental degradation.', 15000000.00, 0.00, './images/Tasmanian Tiger.png'),
-(6, 'Pyrenean Ibex', 'As a grazing animal in mountain regions, the Pyrenean ibex helped prevent overgrowth of vegetation, contributing to the stability and biodiversity of high-altitude ecosystems.', 10000000.00, 0.00, './images/Pyrenean Ibex.png'),
-(7, 'Carolina Parakeet', 'This brightly colored bird played a key role in seed dispersal and pollination, aiding in the maintenance and regeneration of North American forests, which have been impacted by its extinction.', 6000000.00, 0.00, './images/Carolina Parakeet.png'),
-(8, 'Aurochs', 'As large herbivores, aurochs helped shape European landscapes by grazing, which encouraged a diverse range of plant species and supported the complex biodiversity of grassland and forest ecosystems.', 10000000.00, 0.00, './images/Aurochs.png');
+(1, 'Woolly Mammoth', 'By grazing on shrubs and knocking down trees, woolly mammoths could help restore the tundra and grassland ecosystems, promoting plant growth and reducing greenhouse gases like CO2 trapped in the permafrost.', 20000000.00, 860000.00, './images/Woolly Mammoth.png'),
+(2, 'Passenger Pigeon', 'As migratory birds, passenger pigeons played a crucial role in forest regeneration by spreading seeds over vast areas, fostering biodiversity, and maintaining healthy forest ecosystems.', 5000000.00, 1229940.00, './images/Passenger Pigeon.png'),
+(3, 'Steller’s Sea Cow', 'The Steller\'s sea cow was essential for maintaining kelp forest ecosystems by grazing on kelp, which prevented overgrowth and helped maintain the balance of marine environments in the North Pacific.', 12000000.00, 1027500.00, './images/Steller.png'),
+(4, 'Great Auk', 'This flightless seabird contributed to the balance of coastal ecosystems by feeding on fish and other marine life, supporting nutrient cycles that benefit a wide range of marine species.', 7000000.00, 1396200.00, './images/Great Auk.png'),
+(5, 'Tasmanian Tiger\r\n', 'Reintroducing the thylacine could help rebalance predator-prey dynamics in Australian ecosystems, where the loss of top predators has led to overpopulation of herbivores and environmental degradation.', 15000000.00, 1000000.00, './images/Tasmanian Tiger.png'),
+(6, 'Pyrenean Ibex', 'As a grazing animal in mountain regions, the Pyrenean ibex helped prevent overgrowth of vegetation, contributing to the stability and biodiversity of high-altitude ecosystems.', 10000000.00, 3462500.00, './images/Pyrenean Ibex.png'),
+(7, 'Carolina Parakeet', 'This brightly colored bird played a key role in seed dispersal and pollination, aiding in the maintenance and regeneration of North American forests, which have been impacted by its extinction.', 6000000.00, 215030.00, './images/Carolina Parakeet.png'),
+(8, 'Aurochs', 'As large herbivores, aurochs helped shape European landscapes by grazing, which encouraged a diverse range of plant species and supported the complex biodiversity of grassland and forest ecosystems.', 10000000.00, 1500600.00, './images/Aurochs.png');
 
 --
 -- Indexes for dumped tables
