@@ -77,7 +77,7 @@ $result = $conn->query($sql);
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #193f12;
         }
 
         /* Media query for smaller screens */

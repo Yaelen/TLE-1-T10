@@ -3,26 +3,61 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Seed Results</title>
     <link href="css/gaiaInterface.css" rel="stylesheet">
 
+    <style>
+        /* Style for centering the image */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 23vh; /* Adjust the height to center vertically */
+        }
+
+        #capturedImage {
+            max-width: 100%; /* Ensure image doesn't overflow the container */
+            height: auto;
+            border: 1px solid #000000; /* Optional: Add a border around the image */
+            border-radius: 10px;
+        }
+
+        /* Style for larger "Scanned Image" text */
+        .container h3 {
+            font-size: 5rem; /* Adjust size as needed */
+            color: #ccc; /* Optional: Adjust color */
+        }
+    </style>
 </head>
+
 <body>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.js"></script>
 
 <h1 id="resultsTitle">Results</h1>
 
+<div class="container text-center">
+    <h3>Scanned Image</h3>
+    <img id="capturedImage" alt="Captured Image">
+</div>
+
 <div class="graph">
     <canvas id="chart"></canvas>
 </div>
 
+<script>
+    // Retrieve the captured image from localStorage
+    const capturedImage = localStorage.getItem('capturedImage');
+    if (capturedImage) {
+        // Display the image on the page
+        document.getElementById('capturedImage').src = capturedImage;
+    } else {
+        alert('No image found');
+    }
+</script>
 
 <script>
-
-
     const ctx = document.getElementById('chart').getContext('2d');
     const chart = new Chart(ctx, {
         type: 'bar',
@@ -35,7 +70,7 @@
             }],
         },
         options: {
-            indexAxis: 'y', // <-- here
+            indexAxis: 'y',
             responsive: true,
             scales: {
                 y: {
@@ -43,10 +78,9 @@
                         color: 'green',
                         beginAtZero: true,
                         font: {
-                            size: 30, // set the font size for x-axis labels
+                            size: 30, // set the font size for y-axis labels
                         }
                     },
-
                 },
                 x: {
                     ticks: {
@@ -56,15 +90,11 @@
                             size: 30, // set the font size for x-axis labels
                         }
                     },
-
                 }
             },
             plugins: {
                 legend: {
                     labels: {
-
-
-                        // This more specific font property overrides the global property
                         font: {
                             size: 40
                         }
@@ -73,89 +103,11 @@
             }
         }
     });
-
-
-
-
-
-
-
-
-
-    <!--    -->
-//     const xValues = ["Soil quality", "Humidity", "UV exposure", "Toxicity", "Argentina"];
-//
-//     let yValues = [55, 49, 44, 24, 15];
-//     yValues = yValues.map(() => Math.random() * 100); // random values between 0 and 99
-//
-//     const barColors = ["red", "green", "blue", "orange", "brown"];
-//
-//
-//
-//     new Chart("myChart", {
-//         type: "bar",
-//         data: {
-//             labels: xValues,
-//             datasets: [{
-//                 axis: 'y',
-//                 backgroundColor: barColors,
-//                 data: yValues,
-//                 borderWidth: 1
-//
-//             }]
-//         },
-//         options: {
-//             indexAxis: 'y',
-//             scales: {
-//                 yAxes: [{
-//                     ticks: {
-//                         fontColor: 'black', // Change Y-axis tick color
-//                         fontSize: 50 // Change Y-axis tick font size
-//                     }
-//                 }],
-//                 xAxes: [{
-//                     ticks: {
-//                         fontColor: 'black', // Change X-axis tick color
-//                         fontSize: 50 // Change X-axis tick font size
-//                     }
-//                 }]
-//             }
-//         }
-//     });
-//
-//
-//    const xValues2 = ["quality"];
-//
-//    let yValues2 = [1];
-//    yValues2 = yValues2.map(() => Math.random() * 100); // random values between 0 and 99
-//
-//    const barColors2 = ["red"];
-//
-//    new Chart("myChart2", {
-//        type: "bar",
-//        data: {
-//            labels: xValues2,
-//            datasets: [{
-//                backgroundColor: barColors2,
-//                data: yValues2
-//            }]
-//        },
-//        options: {
-//            legend: {display: false},
-//            title: {
-//                display: true,
-//                text: "What da plant doin?"
-//            }
-//        }
-//    });
-
-
 </script>
 
 <div class="generate">
-<a href="gaia_seed_data.php" ><h1>Generate seed</h1></a>
+    <a href="gaia_seed_data.php"><h1>Reveal the Optimal Seed Variant</h1></a>
 </div>
-
 
 <footer class="gaia-seed-links">
     <div class="gaia-seed-div" onclick="window.location.href='seedScan.html';">
@@ -171,7 +123,6 @@
         <a href="seedHistory.html">HISTORY</a>
     </div>
 </footer>
-
 
 </body>
 </html>
