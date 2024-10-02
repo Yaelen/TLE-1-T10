@@ -10,20 +10,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $animal_id = intval($_POST['animal_id']);
     $donation_amount = floatval($_POST['donation']);
 
+    $currenAmountQuery = "SELECT * FROM `animals` WHERE `id` = $animal_id";
+    $amountResult = mysqli_query($db, $currenAmountQuery) or die('Error ' . mysqli_error($db));
+    $row = mysqli_fetch_assoc($amountResult);
+    $currentAmount = $row['current_amount'];
+
+    $newAmount = $currentAmount + $donation_amount;
+    print_r($newAmount) ;
+
     // Update the current_amount in the database
     $update_query = "UPDATE animals 
-                     SET current_amount = current_amount + $donation_amount 
+                     SET current_amount =  $newAmount 
                      WHERE id = $animal_id";
-    mysqli_query($db, $update_query) or die('Error '.mysqli_error($db));
+    mysqli_query($db, $update_query) or die('Error ' . mysqli_error($db));
 
-    // Redirect back to the donation page to avoid form resubmission
-    header("Location: donate.php");
+    // Fetch the updated current amount
+    $result = mysqli_query($db, "SELECT current_amount FROM animals WHERE id = $animal_id");
+    $row = mysqli_fetch_assoc($result);
+    $new_current_amount = $row['current_amount'];
+
+    // Return a JSON response for AJAX requests
+    echo json_encode(['success' => true, 'new_amount' => $new_current_amount]);
+
+    header('Location: donate.php');
     exit;
 }
 
 // Query to select all animals from the database
 $query = "SELECT * FROM animals";
-$result = mysqli_query($db, $query) or die('Error '.mysqli_error($db));
+$result = mysqli_query($db, $query) or die('Error ' . mysqli_error($db));
 
 $animal_donation = [];
 while ($row = mysqli_fetch_assoc($result)) {
@@ -36,13 +51,28 @@ mysqli_close($db);
 
 <!doctype html>
 <html lang="en">
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>GAIA Donate</title>
-<link rel="stylesheet" href="./css/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GAIA Donate</title>
+    <link rel="stylesheet" href="./css/donate.css">
+    <style>
+        .progress-bar {
+            background-color: #c4c2c2;
+            border-radius: 10px;
+            height: 20px;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 10px;
+        }
 
+        .progress {
+            background-color: #853e3e;
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+    </style>
 </head>
 <body class="donation-body">
 
@@ -65,10 +95,9 @@ mysqli_close($db);
 
 <?php foreach ($animal_donation as $animal) { ?>
     <section class="section<?= $animal['id'] ?>">
-
         <h2 class="name<?= $animal['id'] ?>"> <?= $animal['name'] ?> </h2>
         <p class="description<?= $animal['id'] ?>"> <?= $animal['description'] ?> </p>
-        <img src="<?= $animal['image_url'] ?>" alt="<?= $animal['name'] ?>" alt=img-donation"<?= $animal['id'] ?>" >
+        <img src="<?= $animal['image_url'] ?>" alt="<?= $animal['name'] ?>" class="img-donation">
         <p class="goal<?= $animal['id'] ?>"> Goal: €<?= number_format($animal['goal'], 2) ?> </p>
         <p class="current<?= $animal['id'] ?>"> Current amount: €<span id="current-<?= $animal['id'] ?>"><?= number_format($animal['current_amount'], 2) ?></span> </p>
 
@@ -78,7 +107,7 @@ mysqli_close($db);
         </div>
 
         <!-- Donation Form -->
-        <form action="donate.php" method="POST">
+        <form action="donate.php" method="POST" class="donation-form" data-animal-id="<?= $animal['id'] ?>">
             <input type="hidden" name="animal_id" value="<?= $animal['id'] ?>">
             <label for="donation">Choose amount:</label>
             <select name="donation" required>
@@ -88,12 +117,8 @@ mysqli_close($db);
             </select>
             <button type="submit">Submit Donation</button>
         </form>
-
-</section>
-
+    </section>
 <?php } ?>
-
-</body>
 
 <script>
     function submitDonation(animalId, amount) {
@@ -111,11 +136,24 @@ mysqli_close($db);
             let newAmount = parseFloat(currentAmount.textContent.replace(',', '')) + amount;
             currentAmount.textContent = newAmount.toFixed(2);
 
+            // Get goal from the data-goal attribute
             let goal = parseFloat(progress.parentElement.getAttribute('data-goal'));
-            progress.style.width = (newAmount / goal) * 100 + '%';
+
+            // Update the progress bar width based on the new amount
+            let percentage = (newAmount / goal) * 100;
+            progress.style.width = percentage + '%';
+
+            // Optionally change the progress bar color when a certain percentage is reached
+            if (percentage >= 100) {
+                progress.style.backgroundColor = '#193f12'; // Orange when 100% goal is reached
+            } else {
+                progress.style.backgroundColor = '#6b2c28'; // Red color for filled part
+            }
         });
+
     }
 
+    // Optional: Section reordering logic
     const topDonationDiv = document.createElement('div');
     topDonationDiv.className = 'top-donation-div';
     const section1 = document.querySelector('.section1');
@@ -124,14 +162,8 @@ mysqli_close($db);
     topDonationDiv.appendChild(section2);
     document.body.appendChild(topDonationDiv);
 
-
-
-
     const section3 = document.querySelector('.section3');
     document.body.appendChild(section3);
-
-
-
 
     const smallSecondDonationDiv = document.createElement('div');
     smallSecondDonationDiv.className = 'small-second-donation-div';
@@ -148,9 +180,6 @@ mysqli_close($db);
     bigSecondDonationDiv.appendChild(smallSecondDonationDiv);
     document.body.appendChild(bigSecondDonationDiv);
 
-
-
-
     const bottomDonationDiv = document.createElement('div');
     bottomDonationDiv.className = 'bottom-donation-div';
     const section7 = document.querySelector('.section7');
@@ -160,4 +189,5 @@ mysqli_close($db);
     document.body.appendChild(bottomDonationDiv);
 </script>
 
+</body>
 </html>
