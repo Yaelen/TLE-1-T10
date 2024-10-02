@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/gaiaseed.css">
 
-    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
 </head>
 
 <body>
@@ -71,29 +69,24 @@
     <section id="section3">
         <div class="section3-header">
             <div class="section3-head-text">
-                <h4>GAIASEED MATTERS.</h4>
+                <h4>GAIASEED<br>MATTERS.</h4>
                 <div class="section3-stats-container">
-                    <div class="section3-stat1">
-
-                    </div>
+                    <img id="stat1" src="images/gaiaseed/stat1.png" alt="stat 1">
+                    <img id="stat2" src="images/gaiaseed/stat2.png" alt="stat 2">
+                    <img id="stat3" src="images/gaiaseed/stat3.png" alt="stat 3">
                 </div>
             </div>
+
+
         </div>
     </section>
 
-    <section id="section4">
-
-    </section>
-
-    <section id="section5">
-<!--        <script src="https://cdn.amcharts.com/lib/editor/map/5/viewer.js"></script>-->
-        <div id="chartdiv"></div>
-        <script>
-            let root = am5.Root.new("chartdiv");
-            let chart = root.container.children.push(
-                am5map.MapChart.new(root, {})
-            );
-        </script>
-    </section>
+<!--    <section id="section4">-->
+<!---->
+<!--    </section>-->
+<!---->
+<!--    <section id="section5">-->
+<!---->
+<!--    </section>-->
 </body>
 </html>
