@@ -18,7 +18,7 @@
             <a href="parkinfo.php">PARK</a>
             <a href="seed.php">GAIASEED</a>
             <a href="ams.php">ANIMALS</a>
-            <a href="donate.php">SUPPORT</a>
+            <a href="support.php">SUPPORT</a>
             <a href="events.php">DISCOVER</a>
         </div>
         <a href="index.php" id="logo">GAIA</a>

@@ -4,8 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link href="css/gaiaInterface.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="includes/leaflet/leaflet.css"/>
+
+    <script src="includes/leaflet/leaflet.js"></script>
 </head>
 <body>
-    <img src="images/mapPlaceholder.jpeg" alt="">
+        <div id="map"></div>
+
+        <script>
+            let map = L.map('map').setView([52.218, 5.444], 7);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            let plantIcon = L.icon({
+                iconUrl: 'includes/leaflet/images/plantmarker.png',
+                shadowUrl: 'includes/leaflet/images/plantmarker-shadow.png',
+
+                iconSize:     [94, 251], // size of the icon
+                shadowSize:   [129, 74], // size of the shadow
+                iconAnchor:   [42, 238], // point of the icon which will correspond to marker's location
+                shadowAnchor: [4, 62],  // the same for the shadow
+                popupAnchor:  [10, -200] // point from which the popup should open relative to the iconAnchor
+            });
+
+            L.marker([51.917252, 4.484179], {icon: plantIcon}).addTo(map).bindPopup("<h1>jahaha</h1>");
+            img.src = "images/denali.jpg"
+
+            // L.marker.bindPopup("hai").openPopup()
+        </script>
+
+<!--    <img src="images/mapPlaceholder.jpeg" alt="">-->
+
+    <footer class="gaia-seed-links">
+        <div class="gaia-seed-div" onclick="window.location.href='seedScan.html';">
+            <img src="images/scanning-device.png" alt="scan icon" class="img-scan-gaia-seed">
+            <a href="seedScan.html">SCAN</a>
+        </div>
+        <div class="gaia-seed-div" onclick="window.location.href='seedMap.html';">
+            <img src="images/map-position.png" alt="map icon" class="img-map-gaia-seed">
+            <a href="seedMap.html">MAP</a>
+        </div>
+        <div class="gaia-seed-div" onclick="window.location.href='seedHistory.html';">
+            <img src="images/gallery.png" alt="history icon" class="img-history-gaia-seed">
+            <a href="seedHistory.html">HISTORY</a>
+        </div>
+    </footer>
 </body>
 </html>
