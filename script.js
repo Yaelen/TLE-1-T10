@@ -143,24 +143,36 @@ function snapShot() {
     show("flip-button");
     data.canvasEl.width = data.videoEl.videoWidth;
     data.canvasEl.height = data.videoEl.videoHeight;
-    data.canvasEl
-        .getContext("2d")
-        .drawImage(data.videoEl, 0, 0, data.canvasEl.width, data.canvasEl.height);
+    data.canvasEl.getContext("2d").drawImage(data.videoEl, 0, 0, data.canvasEl.width, data.canvasEl.height);
     data.fileData = data.canvasEl.toDataURL("image/jpeg");
 
-    // Save image to localStorage
+    // Save the captured image to localStorage
     saveImageToHistory(data.fileData);
 
-    // enableBtn("download");
-    // enableBtn("share");
+    // Redirect to the result page to display the captured image
+    window.location.href = 'seedResults.html';
 }
+
+// function saveImageToHistory(imageData) {
+//     // Store image in localStorage to be retrieved on another page
+// }
+
 
 // Function to save image to localStorage
 function saveImageToHistory(imageData) {
+    // Retrieve existing history images from localStorage or create an empty array if none exist
     let historyImages = JSON.parse(localStorage.getItem('historyImages')) || [];
+
+    // Push the new image to the history array
     historyImages.push(imageData);
+
+    // Save the new image array to localStorage
     localStorage.setItem('historyImages', JSON.stringify(historyImages));
+
+    // Also save the most recent captured image separately
+    localStorage.setItem('capturedImage', imageData);
 }
+
 
 function stopVideoAndCanvas() {
     data.videoEl.pause();
