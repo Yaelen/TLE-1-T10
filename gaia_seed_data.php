@@ -33,7 +33,6 @@ $result = $conn->query($sql);
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f8f9fa;
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
@@ -69,7 +68,7 @@ $result = $conn->query($sql);
         .btn {
             display: inline-block;
             padding: 12px 25px;
-            background-color: #007bff;
+            background-color: #193f12;
             color: white;
             text-decoration: none;
             border-radius: 5px;
