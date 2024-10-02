@@ -28,7 +28,9 @@
         <div id="section1">
             <div class="product-image">
                 <div class="glass"></div>
-                <div class="outline"></div>
+                <div class="outline">
+                    <img class="gaia-seed" src="images/seed3d.png">
+                </div>
             </div>
 
             <div class="section1-title">
