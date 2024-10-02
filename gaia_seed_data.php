@@ -130,7 +130,7 @@ $result = $conn->query($sql);
     ?>
 
     <!-- Button under the text -->
-    <a href="https://media.makeameme.org/created/planting-seeds-to.jpg" class="btn">Synthesize Seed</a>
+    <a href="seedMap.html" class="btn">Synthesize Seed</a>
 </div>
 
 <footer class="gaia-seed-links">
@@ -147,6 +147,5 @@ $result = $conn->query($sql);
         <a href="seedHistory.html">HISTORY</a>
     </div>
 </footer>
-
 </body>
 </html>
