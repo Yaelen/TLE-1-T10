@@ -56,7 +56,9 @@ h1 {
     font-family: Strawford;
     font-style: italic;
     margin-top: 3vh;
-    font-size: 17vh;
+    font-size: 16vh;
+    -webkit-text-stroke-width: 5pt;
+    -webkit-text-stroke-color: white;
 }
 
 nav {
@@ -147,20 +149,47 @@ span {
 }
 
 .section3-header {
-    background-image: url(../images/section3-banner.jpg);
+    background-image: url("../images/section3-banner.jpg");
     height: 43vh;
     background-position: bottom left;
     background-size: cover;
 }
 
+.section3-stats-container img {
+    align-self: baseline;
+    margin-right: 3vw;
+}
+
+#stat1 {
+    align-self: baseline;
+}
+#stat2 {
+    align-self: center;
+}
+#stat3 {
+    align-self: end
+}
+
 .section3-head-text {
     display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 43vh;
+    backdrop-filter: brightness(0.8);
+}
 
+.section3-stats-container {
+    align-items: center;
+    display: flex;
+    padding: 9vh 2vw 2vh 0;
 }
 
 h4 {
     font-family: Ade;
-    font-size: 10rem;
+    font-size: 14rem;
+    line-height: 116px;
+    margin-top: 15vh;
+    margin-left: 2vw;
 }
 
 .section3-stat1 {
